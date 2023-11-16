@@ -2,6 +2,8 @@ package za.co.discovery.assignment.thabomatjuda.constants;
 
 public class RoutesConstants {
 
+    private RoutesConstants() {}
+
     public static final Integer EXCEL_COLUMN_ROUTE_ID = 0;
     public static final Integer EXCEL_COLUMN_PLANET_ORIGIN = 1;
     public static final Integer EXCEL_COLUMN_PLANET_DESTINATION = 2;
