@@ -26,7 +26,7 @@ public class PlanetService {
     private final PlanetMapper planetMapper;
     private final RouteService routeService;
 
-    public PlanetService(PlanetRepository planetRepository, PlanetMapper planetMapper, RouteService routeService) {
+    public PlanetService( PlanetRepository planetRepository, PlanetMapper planetMapper, RouteService routeService) {
         this.planetRepository = planetRepository;
         this.planetMapper = planetMapper;
         this.routeService = routeService;
@@ -58,11 +58,9 @@ public class PlanetService {
         return responseModel;
     }
 
-    public PlanetModel deleteById( @NotBlank String planetNode) {
-        PlanetModel responseModel = null;
+    public void deleteById(@NotBlank String planetNode) {
         routeService.deletePlanetRoutes( planetNode, planetNode);
         planetRepository.deleteById( planetNode);
-        return responseModel;
     }
 
 }

@@ -1,6 +1,7 @@
 package za.co.discovery.assignment.thabomatjuda.util;
 
 import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
 
 public class TestDataUtil {
 
@@ -11,6 +12,14 @@ public class TestDataUtil {
         planetModel.setPlanetName("Earth");
 
         return planetModel;
+    }
+
+    public static RouteModel buildRoute() {
+        RouteModel routeModel = new RouteModel();
+        routeModel.setRouteId(100);
+        routeModel.setDistanceInLightYears(09.0D);
+
+        return routeModel;
     }
 
 }

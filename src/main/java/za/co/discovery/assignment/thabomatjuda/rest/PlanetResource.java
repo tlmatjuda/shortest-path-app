@@ -32,10 +32,10 @@ public class PlanetResource {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("{planetNode}")
+    @PutMapping("/{planetNode}")
     public ResponseEntity<Object> update(@PathVariable String planetNode, @RequestBody PlanetModel planetModel) {
-        PlanetModel existsingPlanet = planetService.fetchById(planetNode);
-        if (Objects.nonNull( existsingPlanet)){
+        PlanetModel existingPlanet = planetService.fetchById(planetNode);
+        if (Objects.nonNull( existingPlanet)){
             planetService.save(planetModel);
         }
         return new ResponseEntity<>(HttpStatus.OK);
