@@ -1,6 +1,7 @@
 package za.co.discovery.assignment.thabomatjuda.model;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

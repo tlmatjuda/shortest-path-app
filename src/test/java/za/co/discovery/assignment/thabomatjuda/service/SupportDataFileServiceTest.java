@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import za.co.discovery.assignment.thabomatjuda.config.BestTestConfiguration;
+import za.co.discovery.assignment.thabomatjuda.config.BaseTestConfiguration;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @SpringBootTest
-@Import(BestTestConfiguration.class)
+@Import(BaseTestConfiguration.class)
 class SupportDataFileServiceTest {
 
 

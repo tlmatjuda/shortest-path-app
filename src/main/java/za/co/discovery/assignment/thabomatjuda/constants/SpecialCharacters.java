@@ -6,5 +6,6 @@ public class SpecialCharacters {
 
     public static final String COMMA = ",";
     public static final String PERIOD = ".";
+    public static final String SINGLE_QUOTE = "'";
 
 }

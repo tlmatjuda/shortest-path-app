@@ -3,11 +3,13 @@ package za.co.discovery.assignment.thabomatjuda.service;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.thabomatjuda.constants.ExcelSheetConstants;
 import za.co.discovery.assignment.thabomatjuda.constants.PlanetConstants;
 import za.co.discovery.assignment.thabomatjuda.constants.RoutesConstants;
@@ -24,7 +26,7 @@ import java.util.Optional;
 
 
 @Slf4j
-@Component
+@Service
 public class SupportDataFileService {
 
 
@@ -184,13 +186,13 @@ public class SupportDataFileService {
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_ORIGIN == columnIndex) {
-            String planetOriginKey = dataFormatter.formatCellValue(cell);
+            String planetOriginKey = dataFormatter.formatCellValue(cell).replace(SpecialCharacters.SINGLE_QUOTE, StringUtils.EMPTY);
             Planet planetOrigin = getPlanetByNodeFromList(planetOriginKey);
             route.setPlanetOrigin(planetOrigin);
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_DESTINATION == columnIndex) {
-            String planetDestinationKey = dataFormatter.formatCellValue(cell);
+            String planetDestinationKey = dataFormatter.formatCellValue(cell).replace(SpecialCharacters.SINGLE_QUOTE, StringUtils.EMPTY);
             Planet planetDestination = getPlanetByNodeFromList(planetDestinationKey);
             route.setPlanetDestination(planetDestination);
         }

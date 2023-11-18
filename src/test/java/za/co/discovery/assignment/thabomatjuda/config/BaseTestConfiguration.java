@@ -8,7 +8,7 @@ import za.co.discovery.assignment.thabomatjuda.startup.BootstrapOperations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static za.co.discovery.assignment.thabomatjuda.config.BestTestConfiguration.APP_BASE_PACKAGE;
+import static za.co.discovery.assignment.thabomatjuda.config.BaseTestConfiguration.APP_BASE_PACKAGE;
 
 
 @Slf4j
@@ -19,7 +19,7 @@ import static za.co.discovery.assignment.thabomatjuda.config.BestTestConfigurati
             @ComponentScan.Filter( type= FilterType.ASSIGNABLE_TYPE, value= BootstrapOperations.class)
         }
 )
-public class BestTestConfiguration {
+public class BaseTestConfiguration {
 
     public static final String APP_BASE_PACKAGE = "za.co.discovery.assignment.thabomatjuda";
 

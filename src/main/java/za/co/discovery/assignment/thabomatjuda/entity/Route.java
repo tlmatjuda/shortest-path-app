@@ -1,5 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table( name = "Routes")
-@Getter
-@Setter
+@Data
 public class Route {
 
     @Id

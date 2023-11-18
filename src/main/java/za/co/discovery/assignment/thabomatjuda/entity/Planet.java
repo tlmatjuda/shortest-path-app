@@ -1,18 +1,15 @@
 package za.co.discovery.assignment.thabomatjuda.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PlanetNames")
-@Getter
-@Setter
+@Data
 public class Planet implements Serializable {
 
     @Id
@@ -21,5 +18,8 @@ public class Planet implements Serializable {
 
     @Column(name = "Name")
     private String planetName;
+
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Route> routes = new HashSet<>();
 
 }
