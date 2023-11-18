@@ -2,7 +2,6 @@ package za.co.discovery.assignment.thabomatjuda.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
@@ -45,9 +44,7 @@ public class PlanetService {
 
     public PlanetModel save( @Valid PlanetModel planetModel) {
         Planet savedEntity = planetRepository.save(planetMapper.asEntity(planetModel));
-        PlanetModel responseModel = planetMapper.asModel( savedEntity);
-
-        return responseModel;
+        return planetMapper.asModel( savedEntity);
     }
 
     public PlanetModel fetchById( @NotBlank String planetNode) {
