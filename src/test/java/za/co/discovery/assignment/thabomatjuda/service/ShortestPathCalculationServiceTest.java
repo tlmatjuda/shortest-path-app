@@ -19,7 +19,6 @@ class ShortestPathCalculationServiceTest {
     @Autowired
     private ShortestPathCalculationService shortestPathCalculationService;
 
-
     @Test
     void shouldCalculateShortestPath() {
         final String saturnId = "F";
