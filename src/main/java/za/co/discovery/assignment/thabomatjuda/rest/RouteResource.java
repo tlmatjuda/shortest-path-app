@@ -43,7 +43,7 @@ public class RouteResource {
 
         routeModel = routeService.fetchById( routeId);
 
-        return new ResponseEntity<>(routeModel, HttpStatus.CREATED);
+        return new ResponseEntity<>(routeModel, HttpStatus.OK);
     }
 
     @DeleteMapping("/{routeId}")
