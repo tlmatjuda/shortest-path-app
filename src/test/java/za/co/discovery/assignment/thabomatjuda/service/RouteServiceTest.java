@@ -46,16 +46,15 @@ class RouteServiceTest {
 
     @Test
     void shouldFetchById() {
-        RouteModel routeModel = routeService.fetchById(7);
-        assertNotNull( routeModel);
-        assertEquals( 7, routeModel.getRouteId());
-        assertEquals( 2.34D, routeModel.getDistanceInLightYears());
+        RouteModel routeModel = routeService.fetchById(12);
+        assertEquals( 12, routeModel.getRouteId());
+        assertEquals( 3.67D, routeModel.getDistanceInLightYears());
 
         assertNotNull( routeModel.getPlanetOrigin());
-        assertEquals( "D", routeModel.getPlanetOrigin().getPlanetNode());
+        assertEquals( "F", routeModel.getPlanetOrigin().getPlanetNode());
 
         assertNotNull( routeModel.getPlanetDestination());
-        assertEquals( "L", routeModel.getPlanetDestination().getPlanetNode());
+        assertEquals( "K", routeModel.getPlanetDestination().getPlanetNode());
     }
 
     @Test

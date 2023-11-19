@@ -1,7 +1,46 @@
 ----------------------------------------------------------------
-Sun Nov 19 15:48:40 SAST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-e7d7-2d49-000002627e00 
-on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/2a522633-4907-42fa-9d41-65c0284ea969 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
+Sun Nov 19 15:52:57 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-e7db-1924-000001f58c58 
+on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/909368dd-97e3-4572-8d3d-ecdd08fb26a9 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
+Loaded from file:/Users/tlmatjuda/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.7+7
+user.dir=/Users/tlmatjuda/workspace/toob/thabo-matjuda
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.1.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 19 15:53:00 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 357941da-018b-e7db-1924-000001f58c58 
+on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/08a9e202-0de6-4412-b2de-4de829d51021 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
+Loaded from file:/Users/tlmatjuda/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.7+7
+user.dir=/Users/tlmatjuda/workspace/toob/thabo-matjuda
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.1.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 19 15:53:00 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 5d8dc3f6-018b-e7db-1924-000001f58c58 
+on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/efcc0963-5f91-462c-9d37-e5068e137648 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
+Loaded from file:/Users/tlmatjuda/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.7+7
+user.dir=/Users/tlmatjuda/workspace/toob/thabo-matjuda
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.1.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 19 15:53:01 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 6fe0858c-018b-e7db-1924-000001f58c58 
+on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/530ed62a-2e6e-41ad-a342-adf1df8e3767 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
 Loaded from file:/Users/tlmatjuda/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Eclipse Adoptium
 java.runtime.version=17.0.7+7
