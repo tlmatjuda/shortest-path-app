@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.thabomatjuda.constants.RoutesConstants;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.exception.ShortedPathCalculationException;
+import za.co.discovery.assignment.thabomatjuda.exception.ShortestPathCalculationException;
 import za.co.discovery.assignment.thabomatjuda.exception.ShortedPathInitialistionException;
 import za.co.discovery.assignment.thabomatjuda.model.ShortestPathResult;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
@@ -50,25 +50,25 @@ public class ShortestPathCalculationService {
 
         // Validation to check if destination has been provided
         if (StringUtils.isBlank( destination)) {
-            log.info(RoutesConstants.REQUEST_BODY_NOT_FOUND);
-            throw new ShortedPathCalculationException(RoutesConstants.REQUEST_BODY_NOT_FOUND);
+            log.info(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND);
+            throw new ShortestPathCalculationException(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND);
         }
 
         // Validating that given destination exists and that it is not the same as the origin
-        if (graph.containsVertex(destination) && !destination.equals(RoutesConstants.ORIGIN)) {
-            origin = RoutesConstants.ORIGIN;
+        if (graph.containsVertex(destination) && !destination.equals(RoutesConstants.ORIGIN_NODE)) {
+            origin = RoutesConstants.ORIGIN_NODE;
             GraphPath<String, DefaultWeightedEdge> calculationResults = DijkstraShortestPath.findPathBetween(graph, origin, destination);
             calculationResponse.setPath( calculationResults.toString());
             calculationResponse.setTotalDistance( calculationResults.getWeight());
             log.info("The shortest path found : {}, with total distance of : {}",
                     calculationResponse.getPath(), calculationResponse.getTotalDistance());
 
-        } else if (destination.equals(RoutesConstants.ORIGIN)) {
-            log.info(RoutesConstants.DESTINATION_EQUAL_TO_ORIGIN);
-            throw new ShortedPathCalculationException(RoutesConstants.DESTINATION_EQUAL_TO_ORIGIN);
+        } else if (destination.equals(RoutesConstants.ORIGIN_NODE)) {
+            log.info(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
+            throw new ShortestPathCalculationException(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
         } else {
-            log.info(RoutesConstants.DESTINATION_NOT_FOUND);
-            throw new ShortedPathCalculationException(RoutesConstants.DESTINATION_NOT_FOUND);
+            log.info(RoutesConstants.ERROR_DESTINATION_NOT_FOUND);
+            throw new ShortestPathCalculationException(RoutesConstants.ERROR_DESTINATION_NOT_FOUND);
         }
 
         return calculationResponse;
@@ -77,11 +77,9 @@ public class ShortestPathCalculationService {
     // Setting Graph vertices
     private void addVertices() {
         List<Planet> planets = planetRepository.findAll();
-        if ( CollectionUtils.isEmpty( planets)) {
-            throw new ShortedPathInitialistionException("Could not find Planets from the database.");
+        if (CollectionUtils.isNotEmpty(planets)) {
+            planets.forEach(planet -> graph.addVertex(planet.getPlanetNode()));
         }
-
-        planets.forEach(planet -> graph.addVertex(planet.getPlanetNode()));
     }
 
     // Setting Graph edged
