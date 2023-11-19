@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.model.route.RouteMinimalModel;
 import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
-import za.co.discovery.assignment.thabomatjuda.util.TestDataUtil;
 
 import javax.transaction.Transactional;
 import java.util.List;

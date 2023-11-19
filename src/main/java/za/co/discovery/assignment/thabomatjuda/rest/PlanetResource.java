@@ -4,7 +4,7 @@ package za.co.discovery.assignment.thabomatjuda.rest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.service.PlanetService;
 
 import java.util.List;

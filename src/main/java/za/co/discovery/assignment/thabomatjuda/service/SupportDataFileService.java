@@ -22,6 +22,7 @@ import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -147,7 +148,10 @@ public class SupportDataFileService {
                 // Now look through each row's CELL and get the info mapped into the Entities.
                 row.forEach( cell -> buildRouteFromRow( cell, route));
 
-                routeList.add(route);
+                // The nodes must exsits before we can save.
+                if (Objects.nonNull( route.getPlanetOrigin()) && Objects.nonNull( route.getPlanetDestination())) {
+                    routeList.add(route);
+                }
             }
         });
 
@@ -186,13 +190,13 @@ public class SupportDataFileService {
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_ORIGIN == columnIndex) {
-            String planetOriginKey = dataFormatter.formatCellValue(cell).replace(SpecialCharacters.SINGLE_QUOTE, StringUtils.EMPTY);
+            String planetOriginKey = dataFormatter.formatCellValue(cell);
             Planet planetOrigin = getPlanetByNodeFromList(planetOriginKey);
             route.setPlanetOrigin(planetOrigin);
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_DESTINATION == columnIndex) {
-            String planetDestinationKey = dataFormatter.formatCellValue(cell).replace(SpecialCharacters.SINGLE_QUOTE, StringUtils.EMPTY);
+            String planetDestinationKey = dataFormatter.formatCellValue(cell);
             Planet planetDestination = getPlanetByNodeFromList(planetDestinationKey);
             route.setPlanetDestination(planetDestination);
         }

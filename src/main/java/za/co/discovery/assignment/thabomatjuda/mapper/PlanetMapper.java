@@ -4,7 +4,7 @@ package za.co.discovery.assignment.thabomatjuda.mapper;
 import org.mapstruct.Mapper;
 import za.co.discovery.assignment.thabomatjuda.constants.CommonApplicationConstants;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 
 import java.util.List;
 

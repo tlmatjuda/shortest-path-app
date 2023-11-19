@@ -4,10 +4,8 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import za.co.discovery.assignment.thabomatjuda.util.TestDataUtil;
-import za.co.discovery.assignment.thabomatjuda.config.BaseTestConfiguration;
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 
 import java.util.List;
 

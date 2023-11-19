@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.model;
+package za.co.discovery.assignment.thabomatjuda.model.planet;
 
 import lombok.Data;
 

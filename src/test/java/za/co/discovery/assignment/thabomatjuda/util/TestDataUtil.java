@@ -1,6 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.util;
 
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
 
 public class TestDataUtil {

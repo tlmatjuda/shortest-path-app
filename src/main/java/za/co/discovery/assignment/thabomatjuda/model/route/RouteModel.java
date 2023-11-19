@@ -1,7 +1,7 @@
 package za.co.discovery.assignment.thabomatjuda.model.route;
 
 import lombok.Data;
-import za.co.discovery.assignment.thabomatjuda.model.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 
 import javax.validation.constraints.NotNull;
 
