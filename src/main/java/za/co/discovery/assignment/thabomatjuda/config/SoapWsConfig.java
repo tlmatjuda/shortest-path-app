@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
@@ -40,6 +41,15 @@ public class SoapWsConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema shortestPathSchema() {
         return new SimpleXsdSchema(new ClassPathResource("contract/shortest-path-domain.xsd"));
+    }
+
+    @Bean
+    public Jaxb2Marshaller jaxb2Marshaller() {
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setContextPath("za.co.discovery.assignment.thabomatjuda.soap.gen");
+        marshaller.setSchema(new ClassPathResource("contract/shortest-path-domain.xsd"));
+        marshaller.setSupportJaxbElementClass(true);
+        return marshaller;
     }
 
 
