@@ -307,7 +307,7 @@
 			"name": "SOAP",
 			"item": [
 				{
-					"name": "Soap Test",
+					"name": "Calculate Shortest Path",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -319,7 +319,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:gen=\"http://gen.soap.thabomatjuda.assignment.discovery.co.za\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <gen:GetShortestPathRequest>\n         <gen:destination>F</gen:destination>\n      </gen:GetShortestPathRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:gen=\"http://gen.soap.thabomatjuda.assignment.discovery.co.za\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <gen:RouteRequest>\n         <gen:origin>A</gen:origin>\n         <gen:destination>F</gen:destination>\n      </gen:RouteRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
 							"options": {
 								"raw": {
 									"language": "xml"
