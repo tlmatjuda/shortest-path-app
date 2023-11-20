@@ -17,13 +17,13 @@ import javax.xml.namespace.QName;
 @Component
 public class ShortestPathEndpoint {
 
-    @PayloadRoot( namespace = SoapWsConfig.NAMESPACE_URI, localPart = "getShortestPathRequest")
+    @PayloadRoot( namespace = SoapWsConfig.NAMESPACE_URI, localPart = "GetShortestPathRequest")
     @ResponsePayload
-    public GetShortestPathResponse getShortestPath( @RequestPayload GetShortestPathRequest request) {
+    public JAXBElement<GetShortestPathResponse> getShortestPath(@RequestPayload JAXBElement<GetShortestPathRequest> request) {
         GetShortestPathResponse response = new GetShortestPathResponse();
         response.setTotaldistance(2.38D);
 
-        return response;
+        return createJaxbElement(response, GetShortestPathResponse.class);
     }
 
     private <T> JAXBElement<T> createJaxbElement(T object, Class<T> clazz) {
