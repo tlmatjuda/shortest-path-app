@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gen.soap.thabomatjuda.assignment.discovery.co.za"
+           targetNamespace="http://gen.soap.thabomatjuda.assignment.discovery.co.za" elementFormDefault="qualified">
+
+    <xs:element name="getShortestPathRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="destination" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getShortestPathResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="totaldistance" type="xs:double"/>
+                <xs:element name="hops" type="tns:subTrip" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="subTrip">
+        <xs:sequence>
+            <xs:element name="tripStart" type="xs:string"/>
+            <xs:element name="tripEnd" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
