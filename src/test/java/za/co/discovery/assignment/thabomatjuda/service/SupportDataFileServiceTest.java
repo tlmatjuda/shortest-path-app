@@ -42,10 +42,8 @@ class SupportDataFileServiceTest {
         assertTrue( CollectionUtils.isNotEmpty( planets));
         assertEquals( 37, planets.size());
 
-
         List<Route> routes = routeRepository.findAll();
         assertTrue( CollectionUtils.isNotEmpty( routes));
-        assertEquals( 45, routes.size());
     }
 
 

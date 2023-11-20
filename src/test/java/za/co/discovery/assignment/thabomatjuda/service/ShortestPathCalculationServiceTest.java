@@ -21,8 +21,9 @@ class ShortestPathCalculationServiceTest {
 
     @Test
     void shouldCalculateShortestPath() {
-        final String saturnId = "F";
-        ShortestPathResult calculationResponse = shortestPathCalculationService.run(saturnId);
+        final String originKey = "A";
+        final String destinationKey = "F";
+        ShortestPathResult calculationResponse = shortestPathCalculationService.run(originKey, destinationKey);
         assertNotNull( calculationResponse);
 
         String path = calculationResponse.getPath();
@@ -38,14 +39,14 @@ class ShortestPathCalculationServiceTest {
     @Test
     void shouldFailWhenArgumentIsMissing() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run(StringUtils.EMPTY));
+                () -> shortestPathCalculationService.run(StringUtils.EMPTY, StringUtils.EMPTY));
         assertEquals(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND, thrown.getMessage());
     }
 
     @Test
     void shouldFailWhenDestinationIsSameAsOrigin() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run(RoutesConstants.ORIGIN_NODE));
+                () -> shortestPathCalculationService.run(RoutesConstants.ORIGIN_NODE, RoutesConstants.ORIGIN_NODE));
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN, thrown.getMessage());
     }
@@ -53,7 +54,7 @@ class ShortestPathCalculationServiceTest {
     @Test
     void shouldFailWhenDestinationDoesNotExist() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run("AZ"));
+                () -> shortestPathCalculationService.run("AZ", "ZA"));
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }

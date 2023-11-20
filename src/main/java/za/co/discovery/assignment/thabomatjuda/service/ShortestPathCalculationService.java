@@ -44,25 +44,22 @@ public class ShortestPathCalculationService {
     }
 
     // Finding the shortest path to a given destination from the origin (A - Earth)
-    public ShortestPathResult run(String destination) {
-        String origin;
+    public ShortestPathResult run(String origin, String destination) {
         ShortestPathResult calculationResponse = new ShortestPathResult();
 
         // Validation to check if destination has been provided
-        if (StringUtils.isBlank( destination)) {
+        if (StringUtils.isBlank( origin) || StringUtils.isBlank( destination)) {
             log.info(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND);
             throw new ShortestPathCalculationException(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND);
         }
 
         // Validating that given destination exists and that it is not the same as the origin
         if (graph.containsVertex(destination) && !destination.equals(RoutesConstants.ORIGIN_NODE)) {
-            origin = RoutesConstants.ORIGIN_NODE;
             GraphPath<String, DefaultWeightedEdge> calculationResults = DijkstraShortestPath.findPathBetween(graph, origin, destination);
             calculationResponse.setPath( calculationResults.toString());
             calculationResponse.setTotalDistance( calculationResults.getWeight());
             log.info("The shortest path found : {}, with total distance of : {}",
                     calculationResponse.getPath(), calculationResponse.getTotalDistance());
-
         } else if (destination.equals(RoutesConstants.ORIGIN_NODE)) {
             log.info(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
             throw new ShortestPathCalculationException(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
