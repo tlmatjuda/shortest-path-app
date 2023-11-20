@@ -24,8 +24,8 @@ public class ShortestPathHandler {
     public static final int DESTINATION_INDEX = 1;
 
     private final ShortestPathCalculationService shortestPathCalculationService;
-
     private final PlanetService planetService;
+
 
     public ShortestPathHandler(ShortestPathCalculationService shortestPathCalculationService, PlanetService planetService) {
         this.shortestPathCalculationService = shortestPathCalculationService;
@@ -33,7 +33,7 @@ public class ShortestPathHandler {
     }
 
     public RouteResponse calculate( RouteRequest routeRequest) {
-        String origin = routeRequest.getSource();
+        String origin = routeRequest.getOrigin();
         String destination = routeRequest.getDestination();
 
         ShortestPathResult calculationResult = shortestPathCalculationService.run(origin, destination);

@@ -11,5 +11,5 @@ public class RoutesConstants {
     public static final String ORIGIN_NODE = "A";
     public static final String ERROR_DESTINATION_EQUAL_TO_ORIGIN = "Your destination is the same as your origin";
     public static final String ERROR_DESTINATION_NOT_FOUND = "The provided destination is not on the map";
-    public static final String ERROR_REQUEST_BODY_NOT_FOUND = "Origin and Destination require, please supply.";
+    public static final String ERROR_REQUEST_BODY_NOT_FOUND = "Origin and Destination required, please supply.";
 }

@@ -5,7 +5,7 @@
     <xs:element name="RouteRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="source" type="xs:string"/>
+                <xs:element name="origin" type="xs:string"/>
                 <xs:element name="destination" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
