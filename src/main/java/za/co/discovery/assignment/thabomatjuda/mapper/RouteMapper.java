@@ -8,6 +8,10 @@ import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
 
 import java.util.List;
 
+/**
+ * Mapper between our Entities and DTOs for the Route Domain
+ * @author : Thabo Matjuda
+ */
 @Mapper( componentModel = CommonApplicationConstants.SPRING)
 public abstract class RouteMapper {
 

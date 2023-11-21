@@ -327,7 +327,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8003/shortest-path/ws/",
+							"raw": "http://localhost:8003/shortest-path/soap/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -335,7 +335,7 @@
 							"port": "8003",
 							"path": [
 								"shortest-path",
-								"ws",
+								"soap",
 								""
 							]
 						}

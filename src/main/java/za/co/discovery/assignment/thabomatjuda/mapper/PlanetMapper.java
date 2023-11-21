@@ -8,6 +8,11 @@ import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 
 import java.util.List;
 
+
+/**
+ * Mapper between our Entities and DTOs for the Planet Domain
+ * @author : Thabo Matjuda
+ */
 @Mapper( componentModel = CommonApplicationConstants.SPRING)
 public abstract class PlanetMapper {
 

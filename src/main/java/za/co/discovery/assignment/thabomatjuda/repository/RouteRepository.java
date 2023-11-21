@@ -8,6 +8,12 @@ import za.co.discovery.assignment.thabomatjuda.entity.Route;
 
 import java.util.List;
 
+
+/**
+ * Database Mapping, Storing, Updating and Retrieval of Planet Objects
+ * To be used for various Database Operations on the Routes Table
+ * @author : Thabo Matjuda
+ */
 @Repository
 public interface RouteRepository extends JpaRepository<Route, Integer> {
 

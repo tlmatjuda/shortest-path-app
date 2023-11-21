@@ -1,5 +1,10 @@
 package za.co.discovery.assignment.thabomatjuda.constants;
 
+
+/**
+ * For various EXCEL file Labels
+ * @author : Thabo Matjuda
+ */
 public class ExcelSheetConstants {
 
     private ExcelSheetConstants(){}

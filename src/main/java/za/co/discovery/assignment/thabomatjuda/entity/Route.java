@@ -1,11 +1,14 @@
 package za.co.discovery.assignment.thabomatjuda.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Represents our Routes Table.
+ * @author : Thabo Matjuda
+ */
 @Entity
 @Table( name = "Routes")
 @Getter

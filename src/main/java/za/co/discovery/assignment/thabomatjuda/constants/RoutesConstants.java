@@ -1,5 +1,11 @@
 package za.co.discovery.assignment.thabomatjuda.constants;
 
+
+/**
+ * Used for EXCEL file Cell Indexes.
+ * We also have some error messages for the Route Calcualtion of the Shortest path.
+ * @author : Thabo Matjuda
+ */
 public class RoutesConstants {
 
     private RoutesConstants() {}

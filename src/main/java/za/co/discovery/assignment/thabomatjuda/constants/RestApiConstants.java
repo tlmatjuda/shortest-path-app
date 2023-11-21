@@ -1,5 +1,10 @@
 package za.co.discovery.assignment.thabomatjuda.constants;
 
+
+/**
+ * Our REST API paths for various Resources.
+ * @author : Thabo Matjuda
+ */
 public class RestApiConstants {
 
     private RestApiConstants() {}

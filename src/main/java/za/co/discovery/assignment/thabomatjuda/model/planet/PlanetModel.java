@@ -1,6 +1,5 @@
 package za.co.discovery.assignment.thabomatjuda.model.planet;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +7,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-
+/**
+ * Planet DTO that will carry data to and from the outside world via our REST API
+ * @author : Thabo Matjuda
+ */
 @Getter
 @Setter
 @NotNull( message = "Planet data is required")

@@ -16,6 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 
+
+/**
+ * A Query Service for information about the Planet domain.
+ * @author : Thabo Matjuda
+ */
 @Slf4j
 @Service
 @Validated
@@ -24,11 +29,20 @@ public class PlanetQueryService {
     private final PlanetRepository planetRepository;
     private final PlanetMapper planetMapper;
 
+    /**
+     * Constructore injection of our required dependencies
+     * @param planetRepository
+     * @param planetMapper
+     */
     public PlanetQueryService(PlanetRepository planetRepository, PlanetMapper planetMapper) {
         this.planetRepository = planetRepository;
         this.planetMapper = planetMapper;
     }
 
+    /**
+     * Queries the database for all Planets records
+     * @return : A list of the Planets found in the database
+     */
     public List<PlanetModel> fetchAll() {
         List<PlanetModel> responseModel = null;
         List<Planet> planets = planetRepository.findAll();
@@ -39,6 +53,11 @@ public class PlanetQueryService {
         return responseModel;
     }
 
+    /**
+     * Finds a single Planet record from the database.
+     * @param planetNode : Used to search for the data.
+     * @return
+     */
     public PlanetModel fetchById( @NotBlank String planetNode) {
         PlanetModel responseModel = null;
 

@@ -1,5 +1,9 @@
 package za.co.discovery.assignment.thabomatjuda.constants;
 
+/**
+ * Helps us Identify the EXCEL file CELL indexes when unpacking the file
+ * @author : Thabo Matjuda
+ */
 public class PlanetConstants {
 
     private PlanetConstants() {}
