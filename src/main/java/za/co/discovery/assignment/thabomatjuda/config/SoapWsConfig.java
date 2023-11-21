@@ -1,11 +1,13 @@
 package za.co.discovery.assignment.thabomatjuda.config;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
@@ -27,7 +29,9 @@ public class SoapWsConfig extends WsConfigurerAdapter {
 
     public static final String NAMESPACE_URI = "http://gen.soap.thabomatjuda.assignment.discovery.co.za";
     public static final String SOAP_WS_BASE_PATH = SpecialCharacters.FOWARD_SLASH + "soap";
-    private static final ClassPathResource schemaResourceLocataion = new ClassPathResource("contract/shortest-path-domain.xsd");
+
+    @Value("${spp.app.conf.file.soap-schema}")
+    private Resource schemaFileLocation;
 
 
     /**
@@ -62,7 +66,7 @@ public class SoapWsConfig extends WsConfigurerAdapter {
 
     @Bean
     public XsdSchema shortestPathSchema() {
-        return new SimpleXsdSchema(schemaResourceLocataion);
+        return new SimpleXsdSchema(schemaFileLocation);
     }
 
 
