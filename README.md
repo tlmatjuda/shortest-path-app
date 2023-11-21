@@ -27,15 +27,12 @@ The technology stack used in the project is :
 * WSDL4J
 * SOAP Web Services ( WSDL)
 * REST Web Service ( with Spring MVC, JSON, Swagger UI)
-* Swagger API Documentation
-* JSON
 * JUNit 5
 * Mockito
 * JaCoco ( Java Code Coverage )
 * Apache Commons ( for Text, Collections utilities )
 * Apache POI ( for MS Excel Sheet Processing )
 * Dijkstra's algorithm ( for the shorted path calculation )
-
 
 </br>
 
