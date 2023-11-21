@@ -37,6 +37,7 @@ The technology stack used in the project is :
 * Dijkstra's algorithm ( for the shorted path calculation )
 
 
+</br>
 
 ## Setting Up
 
@@ -44,9 +45,8 @@ Given the technology stack mantioned above you will mainly need Java 17 installe
 
 You can use the maven included in the repo with via the supllied scipts for both Windows OS (`mvnw.cmd`) and Unix OS (`mvnw`)based machines.
 
-
 1. To build the project change to the root directory and use the command `./mvnw clean install` to build
-2. When the build is done you can run the service using `mvn spring-boot:run`
+2. When the build is done you can run the service using `./mvnw spring-boot:run`
 
 </br>
 
@@ -54,32 +54,11 @@ You can use the maven included in the repo with via the supllied scipts for both
 
 This application has two Web Services. A REST & SOAP type.
 
-To access or use these APIs please see the follwing information : 
+To access or use these APIs please see the follwing information :
 
 * SOAP : You can get the WSDL by accessing this url : `http://localhost:8003/interstellar/soap/shortest-path.wsdl` and the service is running on `http://localhost:8003/interstellar/soap`.
 * REST : This is for managing the Planets & Routes Entities, with the base path at : `http://localhost:8003/interstellar/rest`
 
-
 There's a Postman collection for both Web Service types in the `src/test/resources` where the filename is : `Shortest Path API.postman_collection.json`
 
 Importing that file will give more context on the Web Services and to test the Web Services.
-
-
-
-
-
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.17/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.17/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.17/reference/htmlsingle/index.html#web)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.17/reference/htmlsingle/index.html#using.devtools)
-* [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/2.7.17/reference/htmlsingle/index.html#appendix.configuration-metadata.annotation-processor)
-
-### Guides
-
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
