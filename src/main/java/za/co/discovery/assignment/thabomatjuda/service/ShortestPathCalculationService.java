@@ -22,6 +22,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
+
+/**
+ * The business logic for calcualtion of the shortest path.
+ * This makes use of the Dijkstra Algorithm to calculate the shortest path.
+ * @author : Thabo Matjuda
+ */
 @Slf4j
 @Service
 @Transactional

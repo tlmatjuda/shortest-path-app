@@ -20,11 +20,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
+/**
+ * Business logic responsible for the Startup process that imports data from the supplied Excel File to the In-Memory Database.
+ * @author : Thabo Matjuda
+ */
 @Slf4j
 @Service
 public class SupportDataFileService {
-
 
 
     @Value("${spp.app.conf.file.suppport-data}")

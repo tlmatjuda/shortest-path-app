@@ -1,7 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.soap.endpoint;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -12,6 +11,12 @@ import za.co.discovery.assignment.thabomatjuda.soap.gen.RouteRequest;
 import za.co.discovery.assignment.thabomatjuda.soap.gen.RouteResponse;
 import za.co.discovery.assignment.thabomatjuda.soap.handler.ShortestPathHandler;
 
+
+
+/**
+ * The Entry Point of our SOAP webservices into our application.
+ * @author : Thabo Matjuda
+ */
 @Endpoint
 @Component
 public class ShortestPathEndpoint {
@@ -22,6 +27,12 @@ public class ShortestPathEndpoint {
         this.shortestPathHandler = shortestPathHandler;
     }
 
+
+    /**
+     * This handles a Route Request to calculate the Shortest path.
+     * @param routeRequest : The request that has the Origin & Destination for the calculation.
+     * @return : A {@link RouteResponse} that contains the total distance of the shortes path, together wit h a list of Hop or Sub-Trips
+     */
     @PayloadRoot( namespace = SoapWsConfig.NAMESPACE_URI, localPart = "RouteRequest")
     @ResponsePayload
     public RouteResponse getShortestPath(@RequestPayload RouteRequest routeRequest) {
