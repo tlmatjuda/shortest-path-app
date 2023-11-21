@@ -34,14 +34,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/planets",
+									"raw": "http://localhost:8003/interstellar/rest/planets",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"planets"
 									]
@@ -68,14 +68,14 @@
 									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Space\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/planets",
+									"raw": "http://localhost:8003/interstellar/rest/planets",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"planets"
 									]
@@ -102,14 +102,14 @@
 									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Spaces Galore\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/planets/TLM",
+									"raw": "http://localhost:8003/interstellar/rest/planets/TLM",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"planets",
 										"TLM"
@@ -137,14 +137,14 @@
 									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Space\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/planets/TLM",
+									"raw": "http://localhost:8003/interstellar/rest/planets/TLM",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"planets",
 										"TLM"
@@ -180,14 +180,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/routes",
+									"raw": "http://localhost:8003/interstellar/rest/routes",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"routes"
 									]
@@ -214,14 +214,14 @@
 									"raw": "{\n    \"routeId\": 120,\n    \"distanceInLightYears\": 0.44,\n    \"planetOrigin\": \"D\",\n    \"planetDestination\": \"L\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/routes",
+									"raw": "http://localhost:8003/interstellar/rest/routes",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"routes"
 									]
@@ -248,14 +248,14 @@
 									"raw": "{\n    \"routeId\": 120,\n    \"distanceInLightYears\": 0.44,\n    \"planetOrigin\": \"T\",\n    \"planetDestination\": \"L\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/routes/120",
+									"raw": "http://localhost:8003/interstellar/rest/routes/120",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"routes",
 										"120"
@@ -283,14 +283,14 @@
 									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Space\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/shortest-path/rest/routes/120",
+									"raw": "http://localhost:8003/interstellar/rest/routes/120",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8003",
 									"path": [
-										"shortest-path",
+										"interstellar",
 										"rest",
 										"routes",
 										"120"
@@ -327,14 +327,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8003/shortest-path/soap/",
+							"raw": "http://localhost:8003/interstellar/soap/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8003",
 							"path": [
-								"shortest-path",
+								"interstellar",
 								"soap",
 								""
 							]

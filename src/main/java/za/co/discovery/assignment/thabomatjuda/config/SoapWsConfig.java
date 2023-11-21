@@ -54,7 +54,7 @@ public class SoapWsConfig extends WsConfigurerAdapter {
      * This also exposes a standard WSDL 1.1 using an XsdSchema. The WSDL name will be the same as the bean name:
      * @return
      */
-    @Bean(name = "calculation")
+    @Bean(name = "shortest-path")
     public DefaultWsdl11Definition defaultWsdl11Definition() {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("ShortestPathPort");
