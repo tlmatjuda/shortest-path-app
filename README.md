@@ -1,11 +1,31 @@
-# Read Me First
-The following was discovered as part of building this project:
+# Interstellar Travel System Service
 
-* The original package name 'za.co.discovery.assignment.thabo-matjuda' is invalid and this project uses 'za.co.discovery.assignment.thabomatjuda' instead.
+
+
+
+# Context
+
+
+```
+![image description](./assets/interstellar-graph.png)
+```
+
+
+The above graph represents an interstellar transport system used by Earth’s inhabitants in the year 2145.
+
+They require you to build a system that will allow them to find the shortest path from point “A”, being Earth, through the galaxy to any of the planets represented by the other nodes.
+
+You are provided with a list of node names and their respective distances between their linked planets.
+
+In addition, you need to ensure that the system will work from any source to destination coordinates specified.
+
+
+
 
 # Getting Started
 
 ### Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -16,9 +36,9 @@ For further reference, please consider the following sections:
 * [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/2.7.17/reference/htmlsingle/index.html#appendix.configuration-metadata.annotation-processor)
 
 ### Guides
+
 The following guides illustrate how to use some features concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-
