@@ -2,16 +2,13 @@ package za.co.discovery.assignment.thabomatjuda.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.mapper.PlanetMapper;
 import za.co.discovery.assignment.thabomatjuda.mapper.RouteMapper;
+import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.model.route.RouteMinimalModel;
 import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
-import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
 import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;
 
 import javax.validation.Valid;
@@ -28,15 +25,13 @@ public class RouteService {
 
     private final RouteRepository routeRepository;
     private final RouteMapper routeMapper;
-    private final PlanetRepository planetRepository;
 
-    private final PlanetMapper planetMapper;
+    private final PlanetQueryService planetQueryService;
 
-    public RouteService(RouteRepository routeRepository, RouteMapper routeMapper, PlanetRepository planetRepository, PlanetMapper planetMapper) {
+    public RouteService(RouteRepository routeRepository, RouteMapper routeMapper, PlanetQueryService planetQueryService) {
         this.routeRepository = routeRepository;
         this.routeMapper = routeMapper;
-        this.planetRepository = planetRepository;
-        this.planetMapper = planetMapper;
+        this.planetQueryService = planetQueryService;
     }
 
     public List<RouteModel> fetchAll() {
@@ -55,11 +50,11 @@ public class RouteService {
         routeModel.setRouteId(routeMinimalModel.getRouteId());
         routeModel.setDistanceInLightYears(routeMinimalModel.getDistanceInLightYears());
 
-        Optional<Planet> optionalOrigin = planetRepository.findById(routeMinimalModel.getPlanetOrigin());
-        optionalOrigin.ifPresent( planet -> routeModel.setPlanetOrigin(planetMapper.asModel(planet)));
+        PlanetModel originPlanet = planetQueryService.fetchById(routeMinimalModel.getPlanetOrigin());
+        routeModel.setPlanetOrigin( originPlanet);
 
-        Optional<Planet> optionalDestination = planetRepository.findById(routeMinimalModel.getPlanetDestination());
-        optionalDestination.ifPresent( planet -> routeModel.setPlanetDestination(planetMapper.asModel(planet)));
+        PlanetModel planetModel = planetQueryService.fetchById(routeMinimalModel.getPlanetDestination());
+        routeModel.setPlanetDestination( planetModel);
 
         Route route = routeRepository.save(routeMapper.asEntity(routeModel));
         return routeMapper.asModel( route);
