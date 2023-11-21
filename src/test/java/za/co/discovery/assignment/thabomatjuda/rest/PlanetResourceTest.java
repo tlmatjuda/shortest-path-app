@@ -12,6 +12,7 @@ import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.mapper.PlanetMapper;
 import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
+import za.co.discovery.assignment.thabomatjuda.service.PlanetQueryService;
 import za.co.discovery.assignment.thabomatjuda.service.PlanetService;
 
 import java.util.List;
@@ -28,6 +29,9 @@ class PlanetResourceTest {
 
     @MockBean
     private PlanetService planetService;
+
+    @MockBean
+    private PlanetQueryService planetQueryService;
 
     @Autowired
     private  PlanetResource planetResource;
@@ -49,7 +53,7 @@ class PlanetResourceTest {
     @Test
     void shouldFetchAll() throws Exception {
         List<PlanetModel> mockedPlanetList = planetMapper.asModel(planetRepository.findAll());
-        when(planetService.fetchAll()).thenReturn(mockedPlanetList);
+        when(planetQueryService.fetchAll()).thenReturn(mockedPlanetList);
 
         ResponseEntity<Object> responseEntity = planetResource.fetchAll();
         assertNotNull( responseEntity);
@@ -77,7 +81,7 @@ class PlanetResourceTest {
         PlanetModel planetModel = planetMapper.asModel(planet);
 
         when(planetService.save( any(PlanetModel.class))).thenReturn(planetModel);
-        when(planetService.fetchById( anyString())).thenReturn(planetModel);
+        when(planetQueryService.fetchById( anyString())).thenReturn(planetModel);
 
         ResponseEntity<Object> responseEntity = planetResource.update(earthId, planetModel);
         assertNotNull( responseEntity);

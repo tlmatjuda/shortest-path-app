@@ -1,12 +1,15 @@
 package za.co.discovery.assignment.thabomatjuda.soap.handler;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.co.discovery.assignment.thabomatjuda.constants.SpecialCharacters;
 import za.co.discovery.assignment.thabomatjuda.model.ShortestPathResult;
 import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
+import za.co.discovery.assignment.thabomatjuda.service.PlanetQueryService;
 import za.co.discovery.assignment.thabomatjuda.service.PlanetService;
 import za.co.discovery.assignment.thabomatjuda.service.ShortestPathCalculationService;
 import za.co.discovery.assignment.thabomatjuda.soap.gen.RouteRequest;
@@ -24,12 +27,12 @@ public class ShortestPathHandler {
     public static final int DESTINATION_INDEX = 1;
 
     private final ShortestPathCalculationService shortestPathCalculationService;
-    private final PlanetService planetService;
+    private final PlanetQueryService planetQueryService;
 
 
-    public ShortestPathHandler(ShortestPathCalculationService shortestPathCalculationService, PlanetService planetService) {
+    public ShortestPathHandler(ShortestPathCalculationService shortestPathCalculationService, PlanetQueryService planetQueryService) {
         this.shortestPathCalculationService = shortestPathCalculationService;
-        this.planetService = planetService;
+        this.planetQueryService = planetQueryService;
     }
 
     public RouteResponse calculate( RouteRequest routeRequest) {
@@ -72,7 +75,7 @@ public class ShortestPathHandler {
 
     private TripInfo buildTripInfo(String planetNode) {
         TripInfo originInfo = new TripInfo();
-        PlanetModel planetModel = planetService.fetchById(planetNode);
+        PlanetModel planetModel = planetQueryService.fetchById(planetNode);
         originInfo.setNode(planetModel.getPlanetNode());
         originInfo.setName(planetModel.getPlanetName());
         return originInfo;

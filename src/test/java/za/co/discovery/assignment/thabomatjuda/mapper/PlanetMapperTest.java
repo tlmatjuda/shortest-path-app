@@ -10,11 +10,11 @@ import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@Slf4j
 @SpringBootTest
 class PlanetMapperTest {
 
@@ -27,16 +27,18 @@ class PlanetMapperTest {
 
     @Test
     void shouldMap() {
-        Planet planet = new Planet();
-        planet.setPlanetNode("A");
-        planet.setPlanetName("Earth");
+        Optional<Planet> optionalPlanet = planetRepository.findById("A");
+        assertTrue( optionalPlanet.isPresent());
 
+        Planet planet = optionalPlanet.get();
         PlanetModel model = planetMapper.asModel(planet);
+
         assertNotNull( model);
-        assertNotNull( model.getPlanetNode());
         assertEquals( planet.getPlanetNode(), model.getPlanetNode());
-        assertNotNull( model.getPlanetName());
         assertEquals( planet.getPlanetName(), model.getPlanetName());
+
+        Planet entity = planetMapper.asEntity(model);
+        assertNotNull( entity);
     }
 
     @Test
@@ -48,5 +50,7 @@ class PlanetMapperTest {
         assertTrue( CollectionUtils.isNotEmpty( modelList));
 
         assertEquals( planets.size(), modelList.size());
+        List<Planet> entityList = planetMapper.asEntity(modelList);
+        assertTrue( CollectionUtils.isNotEmpty( entityList));
     }
 }

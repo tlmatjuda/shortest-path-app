@@ -15,6 +15,9 @@ class PlanetServiceTest {
     @Autowired
     private PlanetService planetService;
 
+    @Autowired
+    private PlanetQueryService planetQueryService;
+
 
     @Test
     void shouldSave() throws Exception {
@@ -28,7 +31,7 @@ class PlanetServiceTest {
     void shouldDeleteById() {
         final String venusId = "D";
         planetService.deleteById(venusId);
-        PlanetModel planetModel = planetService.fetchById(venusId);
+        PlanetModel planetModel = planetQueryService.fetchById(venusId);
         assertNull( planetModel);
     }
 }

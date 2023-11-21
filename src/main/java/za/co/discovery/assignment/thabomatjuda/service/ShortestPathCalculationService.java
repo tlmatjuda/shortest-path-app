@@ -13,7 +13,6 @@ import za.co.discovery.assignment.thabomatjuda.constants.RoutesConstants;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
 import za.co.discovery.assignment.thabomatjuda.exception.ShortestPathCalculationException;
-import za.co.discovery.assignment.thabomatjuda.exception.ShortedPathInitialistionException;
 import za.co.discovery.assignment.thabomatjuda.model.ShortestPathResult;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
 import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;

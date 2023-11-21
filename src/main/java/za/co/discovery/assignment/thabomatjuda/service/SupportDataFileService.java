@@ -2,13 +2,9 @@ package za.co.discovery.assignment.thabomatjuda.service;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.thabomatjuda.constants.ExcelSheetConstants;
 import za.co.discovery.assignment.thabomatjuda.constants.PlanetConstants;
@@ -16,7 +12,6 @@ import za.co.discovery.assignment.thabomatjuda.constants.RoutesConstants;
 import za.co.discovery.assignment.thabomatjuda.constants.SpecialCharacters;
 import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.exception.SupportDataFileProcessingException;
 import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
 import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;
 
@@ -118,11 +113,6 @@ public class SupportDataFileService {
             }
         });
 
-        // If we don't have records then something went wrong with reading the excel file.
-        if (CollectionUtils.isEmpty(planetList)) {
-            throw new SupportDataFileProcessingException("extractPlanets() - No records found while reading the Excel file");
-        }
-
         log.info("Extracted a total of {} PLANETS from the excel file", planetList.size());
     }
 
@@ -154,11 +144,6 @@ public class SupportDataFileService {
                 }
             }
         });
-
-        // If we don't have records then something went wrong with reading of the excel file.
-        if (CollectionUtils.isEmpty(routeList)) {
-            throw new SupportDataFileProcessingException("extractRoutes() - No records found while reading the Excel file");
-        }
 
         log.info("Extracted a total of {} ROUTES from the excel file", routeList.size());
     }

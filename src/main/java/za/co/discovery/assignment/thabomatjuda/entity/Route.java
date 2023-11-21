@@ -8,7 +8,8 @@ import javax.persistence.*;
 
 @Entity
 @Table( name = "Routes")
-@Data
+@Getter
+@Setter
 public class Route {
 
     @Id

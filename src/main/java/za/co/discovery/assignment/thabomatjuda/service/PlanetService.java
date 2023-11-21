@@ -32,30 +32,9 @@ public class PlanetService {
         this.routeService = routeService;
     }
 
-    public List<PlanetModel> fetchAll() {
-        List<PlanetModel> responseModel = null;
-        List<Planet> planets = planetRepository.findAll();
-        if (CollectionUtils.isNotEmpty( planets)) {
-            responseModel = planetMapper.asModel( planets);
-        }
-
-        return responseModel;
-    }
-
     public PlanetModel save( @Valid PlanetModel planetModel) {
         Planet savedEntity = planetRepository.save(planetMapper.asEntity(planetModel));
         return planetMapper.asModel( savedEntity);
-    }
-
-    public PlanetModel fetchById( @NotBlank String planetNode) {
-        PlanetModel responseModel = null;
-
-        Optional<Planet> optionalPlanet = planetRepository.findById(planetNode);
-        if ( optionalPlanet.isPresent()) {
-            responseModel = planetMapper.asModel( optionalPlanet.get());
-        }
-
-        return responseModel;
     }
 
     public void deleteById(@NotBlank String planetNode) {
