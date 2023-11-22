@@ -70,7 +70,7 @@ As mentioned above I am using JaCoCo for test coverage. The service is curretnly
 
 After bulding the app with tests you can find the report in : `target/site/index.html`
 
-The image below has been attached in the folder `${roo}/assets/jacoco-test-coverage-report.png`
+The image below has been attached in the folder ${roo}/assets/jacoco-test-coverage-report.png
 
 Open that in using your preferred browser.
 

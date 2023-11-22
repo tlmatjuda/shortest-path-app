@@ -44,14 +44,6 @@ class ShortestPathCalculationServiceTest {
     }
 
     @Test
-    void shouldFailWhenDestinationIsSameAsOrigin() {
-        Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run(RoutesConstants.ORIGIN_NODE, RoutesConstants.ORIGIN_NODE));
-
-        assertEquals(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN, thrown.getMessage());
-    }
-
-    @Test
     void shouldFailWhenDestinationDoesNotExist() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
                 () -> shortestPathCalculationService.run("AZ", "ZA"));

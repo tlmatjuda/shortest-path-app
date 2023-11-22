@@ -78,13 +78,7 @@ public class ShortestPathCalculationService {
             calculationResponse.setTotalDistance( calculationResults.getWeight());
             log.info("The shortest path found : {}, with total distance of : {}",
                     calculationResponse.getPath(), calculationResponse.getTotalDistance());
-
-            // Checking that we are not using the main Origin or starting point whcih is A = Earth
-        } else if (destination.equals(RoutesConstants.ORIGIN_NODE)) {
-            log.info(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
-            throw new ShortestPathCalculationException(RoutesConstants.ERROR_DESTINATION_EQUAL_TO_ORIGIN);
-
-            // Let's also make sure we have what we are looking for. The destination must exist
+        // Let's also make sure we have what we are looking for. The destination must exist
         } else {
             log.info(RoutesConstants.ERROR_DESTINATION_NOT_FOUND);
             throw new ShortestPathCalculationException(RoutesConstants.ERROR_DESTINATION_NOT_FOUND);
