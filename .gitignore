@@ -108,3 +108,4 @@ dist/**
 *.app
 *.exe
 /src/main/java/META-INF/**
+derby.log
