@@ -4,7 +4,7 @@ The above graph represents an interstellar transport system used by Earth’s in
 
 They require you to build a system that will allow them to find the shortest path from point “A”, being Earth, through the galaxy to any of the planets represented by the other nodes.
 
-You are provided with a list of node names and their respective distances between their linked planets.
+You are provided with a list of node names and their respective distances between their linked planets and things.
 
 In addition, you need to ensure that the system will work from any source to destination coordinates specified.
 
