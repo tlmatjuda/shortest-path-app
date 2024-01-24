@@ -11,16 +11,16 @@
 
 	<groupId>za.co.discovery.assignment</groupId>
 	<artifactId>thabo-matjuda</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Thabo Matjuda [POM]</name>
 	<description>Shortest Path Service</description>
 
-	<scm>
-		<url>https://github.com/tlmatjuda/shortest-path-app.git</url> <!-- URL HTTP de clone do projeto -->
-		<connection>scm:git:https://github.com/tlmatjuda/shortest-path-app.git</connection> <!-- URL HTTP de clone do projeto -->
-		<developerConnection>scm:git:https://github.com/tlmatjuda/shortest-path-app.git</developerConnection> <!-- URL HTTP de clone do projeto -->
-		<tag>1.2.10</tag>
-	</scm>
+<!--	<scm>-->
+<!--		<url>https://github.com/tlmatjuda/shortest-path-app.git</url> &lt;!&ndash; URL HTTP de clone do projeto &ndash;&gt;-->
+<!--		<connection>scm:git:https://github.com/tlmatjuda/shortest-path-app.git</connection> &lt;!&ndash; URL HTTP de clone do projeto &ndash;&gt;-->
+<!--		<developerConnection>scm:git:https://github.com/tlmatjuda/shortest-path-app.git</developerConnection> &lt;!&ndash; URL HTTP de clone do projeto &ndash;&gt;-->
+<!--		<tag>1.2.10</tag>-->
+<!--	</scm>-->
 
 	<properties>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
