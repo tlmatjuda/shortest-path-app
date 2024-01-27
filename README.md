@@ -68,7 +68,7 @@ Importing that file will give more context on the Web Services and to test the W
 
 As mentioned above I am using JaCoCo for test coverage. The service is curretnly sitting at **94%** coverage
 
-After bulding the app with tests you can find the report in : `target/site/index.html`
+After bulding the app with tests you can find the report in : `target/site/index.html`. This will be coverage
 
 The image below has been attached in the folder ${roo}/assets/jacoco-test-coverage-report.png
 
