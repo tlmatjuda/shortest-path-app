@@ -1,10 +1,10 @@
 package za.co.discovery.assignment.thabomatjuda.config;
 
+import com.toob.service.shortest.startup.BootstrapOperations;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import za.co.discovery.assignment.thabomatjuda.startup.BootstrapOperations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

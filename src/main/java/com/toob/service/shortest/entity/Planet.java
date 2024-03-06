@@ -1,0 +1,30 @@
+package com.toob.service.shortest.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+
+/**
+ * Represents our PlanetNames table.
+ * @author : Thabo Matjuda
+ */
+@Entity
+@Table(name = "PlanetNames")
+@Getter
+@Setter
+public class Planet implements Serializable {
+
+    @Id
+    @Column(name = "Node", unique = true)
+    private String planetNode;
+
+    @Column(name = "Name")
+    private String planetName;
+
+}

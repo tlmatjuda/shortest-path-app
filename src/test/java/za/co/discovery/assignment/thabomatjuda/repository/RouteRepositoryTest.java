@@ -1,11 +1,12 @@
 package za.co.discovery.assignment.thabomatjuda.repository;
 
+import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.entity.Route;
+import com.toob.service.shortest.repository.RouteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.entity.Planet;
-import za.co.discovery.assignment.thabomatjuda.entity.Route;
 
 import java.util.Optional;
 

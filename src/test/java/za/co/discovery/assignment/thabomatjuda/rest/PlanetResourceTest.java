@@ -1,5 +1,12 @@
 package za.co.discovery.assignment.thabomatjuda.rest;
 
+import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.mapper.PlanetMapper;
+import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.repository.PlanetRepository;
+import com.toob.service.shortest.rest.PlanetResource;
+import com.toob.service.shortest.service.PlanetQueryService;
+import com.toob.service.shortest.service.PlanetService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
-import za.co.discovery.assignment.thabomatjuda.entity.Planet;
-import za.co.discovery.assignment.thabomatjuda.mapper.PlanetMapper;
-import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
-import za.co.discovery.assignment.thabomatjuda.repository.PlanetRepository;
-import za.co.discovery.assignment.thabomatjuda.service.PlanetQueryService;
-import za.co.discovery.assignment.thabomatjuda.service.PlanetService;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ class PlanetResourceTest {
     private PlanetQueryService planetQueryService;
 
     @Autowired
-    private  PlanetResource planetResource;
+    private PlanetResource planetResource;
 
     @Autowired
     private PlanetRepository planetRepository;

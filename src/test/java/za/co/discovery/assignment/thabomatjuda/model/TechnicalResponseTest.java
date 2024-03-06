@@ -1,5 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.model;
 
+import com.toob.service.shortest.model.TechnicalResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

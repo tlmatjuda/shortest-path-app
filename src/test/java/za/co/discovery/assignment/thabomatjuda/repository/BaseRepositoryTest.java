@@ -1,9 +1,10 @@
 package za.co.discovery.assignment.thabomatjuda.repository;
 
+import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.repository.PlanetRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.entity.Planet;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

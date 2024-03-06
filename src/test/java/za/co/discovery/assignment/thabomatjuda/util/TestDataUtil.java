@@ -1,7 +1,8 @@
 package za.co.discovery.assignment.thabomatjuda.util;
 
-import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
-import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
+
+import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.model.route.RouteModel;
 
 public class TestDataUtil {
 

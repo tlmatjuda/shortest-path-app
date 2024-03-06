@@ -1,18 +1,19 @@
 package za.co.discovery.assignment.thabomatjuda.rest;
 
 
+import com.toob.service.shortest.entity.Route;
+import com.toob.service.shortest.mapper.RouteMapper;
+import com.toob.service.shortest.model.route.RouteMinimalModel;
+import com.toob.service.shortest.model.route.RouteModel;
+import com.toob.service.shortest.repository.RouteRepository;
+import com.toob.service.shortest.rest.RouteResource;
+import com.toob.service.shortest.service.RouteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.mapper.RouteMapper;
-import za.co.discovery.assignment.thabomatjuda.model.route.RouteMinimalModel;
-import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
-import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;
-import za.co.discovery.assignment.thabomatjuda.service.RouteService;
 
 import java.util.List;
 

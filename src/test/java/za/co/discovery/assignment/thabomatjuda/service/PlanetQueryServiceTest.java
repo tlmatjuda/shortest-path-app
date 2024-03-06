@@ -1,10 +1,11 @@
 package za.co.discovery.assignment.thabomatjuda.service;
 
+import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.service.PlanetQueryService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
 
 import java.util.List;
 

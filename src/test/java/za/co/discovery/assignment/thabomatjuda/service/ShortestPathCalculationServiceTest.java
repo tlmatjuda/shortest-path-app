@@ -1,13 +1,14 @@
 package za.co.discovery.assignment.thabomatjuda.service;
 
+import com.toob.service.shortest.constants.RoutesConstants;
+import com.toob.service.shortest.exception.ShortestPathCalculationException;
+import com.toob.service.shortest.model.ShortestPathResult;
+import com.toob.service.shortest.service.ShortestPathCalculationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.constants.RoutesConstants;
-import za.co.discovery.assignment.thabomatjuda.exception.ShortestPathCalculationException;
-import za.co.discovery.assignment.thabomatjuda.model.ShortestPathResult;
 
 import static org.junit.jupiter.api.Assertions.*;
 

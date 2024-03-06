@@ -1,14 +1,15 @@
 package za.co.discovery.assignment.thabomatjuda.mapper;
 
+import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.entity.Route;
+import com.toob.service.shortest.mapper.RouteMapper;
+import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.model.route.RouteModel;
+import com.toob.service.shortest.repository.RouteRepository;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.entity.Planet;
-import za.co.discovery.assignment.thabomatjuda.entity.Route;
-import za.co.discovery.assignment.thabomatjuda.model.planet.PlanetModel;
-import za.co.discovery.assignment.thabomatjuda.model.route.RouteModel;
-import za.co.discovery.assignment.thabomatjuda.repository.RouteRepository;
 
 import java.util.List;
 import java.util.Optional;

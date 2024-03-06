@@ -1,5 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.soap.handler;
 
+import com.toob.service.shortest.soap.handler.ShortestPathHandler;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
