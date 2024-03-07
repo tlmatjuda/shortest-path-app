@@ -4,14 +4,14 @@ import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
 import com.toob.service.shortest.repository.PlanetRepository;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Optional;
 

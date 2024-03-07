@@ -2,14 +2,14 @@ package com.toob.service.shortest.rest;
 
 
 import com.toob.service.shortest.model.TechnicalResponse;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.persistence.EntityNotFoundException;
-import javax.validation.ConstraintViolationException;
 
 /**
  * And HTTP Error Handler for Our REST API.

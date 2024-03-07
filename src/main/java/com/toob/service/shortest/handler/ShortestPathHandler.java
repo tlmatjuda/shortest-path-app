@@ -1,18 +1,14 @@
-package com.toob.service.shortest.soap.handler;
+package com.toob.service.shortest.handler;
 
 
 import com.toob.service.shortest.constants.SpecialCharacters;
-import com.toob.service.shortest.model.ShortestPathResult;
+import com.toob.service.shortest.model.*;
 import com.toob.service.shortest.model.planet.PlanetModel;
 import com.toob.service.shortest.service.PlanetQueryService;
 import com.toob.service.shortest.service.ShortestPathCalculationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import za.co.discovery.assignment.thabomatjuda.soap.gen.RouteRequest;
-import za.co.discovery.assignment.thabomatjuda.soap.gen.RouteResponse;
-import za.co.discovery.assignment.thabomatjuda.soap.gen.TripHop;
-import za.co.discovery.assignment.thabomatjuda.soap.gen.TripInfo;
 
 import java.util.List;
 
@@ -48,7 +44,7 @@ public class ShortestPathHandler {
      * @param routeRequest : Takes in this request on unpack the required arguments.
      * @return
      */
-    public RouteResponse calculate( RouteRequest routeRequest) {
+    public JsonRouteResponse calculate(JsonRouteRequest routeRequest) {
         String origin = routeRequest.getOrigin();
         String destination = routeRequest.getDestination();
 
@@ -62,7 +58,7 @@ public class ShortestPathHandler {
      * @param calculationResult : The required result in order to build up a response.
      * @return
      */
-    private RouteResponse buildRouteResponseBasedOnResults(ShortestPathResult calculationResult) {
+    private JsonRouteResponse buildRouteResponseBasedOnResults(ShortestPathResult calculationResult) {
         int tripIndex = 0;
         String calculationResultsText = calculationResult.getPath();
 
@@ -73,23 +69,23 @@ public class ShortestPathHandler {
         String[] tripHopsArray = sanitisedCalculationsResultsText.split(SpecialCharacters.COMMA);
 
         // Prepare the response and start setting all the data we need.
-        RouteResponse routeResponse = new RouteResponse();
+        JsonRouteResponse routeResponse = new JsonRouteResponse();
         routeResponse.setTotaldistance( calculationResult.getTotalDistance());
-        List<TripHop> tripHops = routeResponse.getHops();
+        List<JsonTripHop> tripHops = routeResponse.getHops();
 
         for (String rawTripInfo : tripHopsArray) {
-            TripHop tripHop = new TripHop();
+            JsonTripHop tripHop = new JsonTripHop();
             tripHop.setIndex(tripIndex);
 
             // Split up into the Origin & Destination Nodes.
             String[] singleHopPlanetNodesArray = rawTripInfo.split(SpecialCharacters.COLON);
 
             // Look up and build a Hop Object for the Origin
-            TripInfo originInfo = buildTripInfo( singleHopPlanetNodesArray[ORIGIN_INDEX].trim());
+            JsonTripInfo originInfo = buildTripInfo( singleHopPlanetNodesArray[ORIGIN_INDEX].trim());
             tripHop.setTripStart(originInfo);
 
             // Look up and build a Hop Object for the Destination
-            TripInfo destinationInfo = buildTripInfo( singleHopPlanetNodesArray[DESTINATION_INDEX].trim());
+            JsonTripInfo destinationInfo = buildTripInfo( singleHopPlanetNodesArray[DESTINATION_INDEX].trim());
             tripHop.setTripEnd(destinationInfo);
 
             tripHops.add(tripHop);
@@ -105,8 +101,8 @@ public class ShortestPathHandler {
      * @param planetNode : Source node to use when building up information.
      * @return
      */
-    private TripInfo buildTripInfo(String planetNode) {
-        TripInfo originInfo = new TripInfo();
+    private JsonTripInfo buildTripInfo(String planetNode) {
+        JsonTripInfo originInfo = new JsonTripInfo();
         PlanetModel planetModel = planetQueryService.fetchById(planetNode);
         originInfo.setNode(planetModel.getPlanetNode());
         originInfo.setName(planetModel.getPlanetName());

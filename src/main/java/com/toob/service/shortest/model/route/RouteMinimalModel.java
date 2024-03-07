@@ -3,7 +3,7 @@ package com.toob.service.shortest.model.route;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * Route Minimal DTO that will carry data to and from the outside world via our REST API
