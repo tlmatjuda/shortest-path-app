@@ -1,6 +1,5 @@
 package com.toob.service.shortest;
 
-import lombok.RequiredArgsConstructor;
 import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @EnableWebMvc
-public class ShortestPathConfigFactory {
+public class ApplicationConfigFactory {
 
     private final Environment environment;
 
-    public ShortestPathConfigFactory(Environment environment) {
+    public ApplicationConfigFactory(Environment environment) {
         this.environment = environment;
     }
 
