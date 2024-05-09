@@ -43,14 +43,14 @@ class RouteMapperTest {
         RouteModel routeModel = routeMapper.asModel(route);
         assertNotNull( routeModel);
 
-        assertEquals( route.getId(), routeModel.getRouteId());
-        assertEquals( route.getDistance(), routeModel.getDistanceInLightYears());
+        assertEquals( route.getId(), routeModel.getId());
+        assertEquals( route.getDistance(), routeModel.getDistance());
 
-        PlanetModel originModel = routeModel.getPlanetOrigin();
-        PlanetModel destinationModel = routeModel.getPlanetDestination();
+        PlanetModel originModel = routeModel.getOrigin();
+        PlanetModel destinationModel = routeModel.getDestination();
 
-        assertEquals( planetOrigin.getNode(), originModel.getPlanetNode());
-        assertEquals( planetOrigin.getName(), originModel.getPlanetName());
+        assertEquals( planetOrigin.getNode(), originModel.getNode());
+        assertEquals( planetOrigin.getName(), originModel.getName());
 
     }
 

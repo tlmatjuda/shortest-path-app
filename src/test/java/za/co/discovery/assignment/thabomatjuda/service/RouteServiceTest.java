@@ -35,10 +35,10 @@ class RouteServiceTest {
     @Test
     void shouldSave() throws Exception {
         RouteMinimalModel routeMinimalModel = new RouteMinimalModel();
-        routeMinimalModel.setRouteId(240);
-        routeMinimalModel.setDistanceInLightYears(40.0D);
-        routeMinimalModel.setPlanetOrigin("D");
-        routeMinimalModel.setPlanetDestination("L");
+        routeMinimalModel.setId(240);
+        routeMinimalModel.setDistance(40.0D);
+        routeMinimalModel.setOrigin("D");
+        routeMinimalModel.setDestination("L");
 
         RouteModel savedRoute = routeService.save(routeMinimalModel);
         assertNotNull( savedRoute);
@@ -47,14 +47,14 @@ class RouteServiceTest {
     @Test
     void shouldFetchById() {
         RouteModel routeModel = routeService.fetchById(12);
-        assertEquals( 12, routeModel.getRouteId());
-        assertEquals( 3.67D, routeModel.getDistanceInLightYears());
+        assertEquals( 12, routeModel.getId());
+        assertEquals( 3.67D, routeModel.getDistance());
 
-        assertNotNull( routeModel.getPlanetOrigin());
-        assertEquals( "F", routeModel.getPlanetOrigin().getPlanetNode());
+        assertNotNull( routeModel.getOrigin());
+        assertEquals( "F", routeModel.getOrigin().getNode());
 
-        assertNotNull( routeModel.getPlanetDestination());
-        assertEquals( "K", routeModel.getPlanetDestination().getPlanetNode());
+        assertNotNull( routeModel.getDestination());
+        assertEquals( "K", routeModel.getDestination().getNode());
     }
 
     @Test

@@ -17,9 +17,9 @@ import java.io.Serializable;
 public class PlanetModel implements Serializable {
 
     @NotBlank( message = "PlanetNode is required")
-    private String planetNode;
+    private String node;
 
     @NotBlank( message = "PlanetName is required")
-    private String planetName;
+    private String name;
 
 }

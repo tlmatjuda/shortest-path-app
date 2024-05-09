@@ -18,9 +18,9 @@ import java.io.Serializable;
 public class BaseRouteModel implements Serializable  {
 
     @NotNull( message = "RouteId is required")
-    private Integer routeId;
+    private Integer id;
 
     @NotNull( message = "Distance is required")
-    private Double distanceInLightYears;
+    private Double distance;
 
 }

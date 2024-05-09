@@ -34,8 +34,8 @@ class PlanetMapperTest {
         PlanetModel model = planetMapper.asModel(planet);
 
         assertNotNull( model);
-        assertEquals( planet.getNode(), model.getPlanetNode());
-        assertEquals( planet.getName(), model.getPlanetName());
+        assertEquals( planet.getNode(), model.getNode());
+        assertEquals( planet.getName(), model.getName());
 
         Planet entity = planetMapper.asEntity(model);
         assertNotNull( entity);

@@ -9,16 +9,16 @@ public class TestDataUtil {
 
     public static PlanetModel buildPlanet() {
         PlanetModel planetModel = new PlanetModel();
-        planetModel.setPlanetNode("A");
-        planetModel.setPlanetName("Earth");
+        planetModel.setNode("A");
+        planetModel.setName("Earth");
 
         return planetModel;
     }
 
     public static RouteModel buildRoute() {
         RouteModel routeModel = new RouteModel();
-        routeModel.setRouteId(100);
-        routeModel.setDistanceInLightYears(09.0D);
+        routeModel.setId(100);
+        routeModel.setDistance(09.0D);
 
         return routeModel;
     }

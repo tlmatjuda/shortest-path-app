@@ -8,7 +8,7 @@ import java.util.List;
 @Setter
 public class JsonRouteResponse {
 
-    protected double totaldistance;
-    protected List<JsonTripHop> hops;
+    protected double totalDistanceInLightYears;
+    protected List<JsonTripHop> subTrips;
 
 }

@@ -30,8 +30,8 @@ class PlanetQueryServiceTest {
     void shouldFetchById() throws Exception {
         PlanetModel foundRecord = planetQueryService.fetchById("C");
         assertNotNull( foundRecord);
-        assertNotNull( foundRecord.getPlanetName());
-        assertEquals( "Jupiter", foundRecord.getPlanetName());
+        assertNotNull( foundRecord.getName());
+        assertEquals( "Jupiter", foundRecord.getName());
     }
 
 }

@@ -14,9 +14,9 @@ import jakarta.validation.constraints.NotBlank;
 public class RouteMinimalModel extends BaseRouteModel {
 
     @NotBlank( message = "Origin is required")
-    private String planetOrigin;
+    private String origin;
 
     @NotBlank( message = "Destination is required")
-    private String planetDestination;
+    private String destination;
 
 }

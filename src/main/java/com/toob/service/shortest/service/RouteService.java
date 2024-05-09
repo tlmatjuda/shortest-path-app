@@ -66,14 +66,14 @@ public class RouteService {
     public RouteModel save(@Valid RouteMinimalModel routeMinimalModel) {
 
         RouteModel routeModel = new RouteModel();
-        routeModel.setRouteId(routeMinimalModel.getRouteId());
-        routeModel.setDistanceInLightYears(routeMinimalModel.getDistanceInLightYears());
+        routeModel.setId(routeMinimalModel.getId());
+        routeModel.setDistance(routeMinimalModel.getDistance());
 
-        PlanetModel originPlanet = planetQueryService.fetchById(routeMinimalModel.getPlanetOrigin());
-        routeModel.setPlanetOrigin( originPlanet);
+        PlanetModel originPlanet = planetQueryService.fetchById(routeMinimalModel.getOrigin());
+        routeModel.setOrigin( originPlanet);
 
-        PlanetModel planetModel = planetQueryService.fetchById(routeMinimalModel.getPlanetDestination());
-        routeModel.setPlanetDestination( planetModel);
+        PlanetModel planetModel = planetQueryService.fetchById(routeMinimalModel.getDestination());
+        routeModel.setDestination( planetModel);
 
         Route route = routeRepository.save(routeMapper.asEntity(routeModel));
         return routeMapper.asModel( route);

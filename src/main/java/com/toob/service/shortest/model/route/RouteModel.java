@@ -16,9 +16,9 @@ import jakarta.validation.constraints.NotNull;
 public class RouteModel extends BaseRouteModel {
 
     @NotNull( message = "Origin is required")
-    private PlanetModel planetOrigin;
+    private PlanetModel origin;
 
     @NotNull( message = "Destination is required")
-    private PlanetModel planetDestination;
+    private PlanetModel destination;
 
 }

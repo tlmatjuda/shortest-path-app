@@ -110,10 +110,10 @@ public class ShortestPathCalculationService {
 
             // Validating that edge nodes are different
             if (!originNode.equals(destinationNode)) {
-                edge.set( graph.addEdge(originNode, destinationNode));
+                DefaultWeightedEdge edge1 = graph.addEdge(originNode, destinationNode);
+                addEdgeWeight(edge1, routeRecord.getDistance());
             }
-            // Adding edge weight
-            addEdgeWeight( edge.get(), routeRecord.getDistance());
+
         });
     }
 
@@ -125,6 +125,4 @@ public class ShortestPathCalculationService {
     private void addEdgeWeight(DefaultWeightedEdge edge, double weight) {
         graph.setEdgeWeight(edge, weight);
     }
-
-
 }

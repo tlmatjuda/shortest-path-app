@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,7 +60,6 @@ public class ShortestPathHandler {
      * @return
      */
     private JsonRouteResponse buildRouteResponseBasedOnResults(ShortestPathResult calculationResult) {
-        int tripIndex = 0;
         String calculationResultsText = calculationResult.getPath();
 
         // Cleanup the response
@@ -70,8 +70,15 @@ public class ShortestPathHandler {
 
         // Prepare the response and start setting all the data we need.
         JsonRouteResponse routeResponse = new JsonRouteResponse();
-        routeResponse.setTotaldistance( calculationResult.getTotalDistance());
-        List<JsonTripHop> tripHops = routeResponse.getHops();
+        routeResponse.setTotalDistanceInLightYears( calculationResult.getTotalDistance());
+        routeResponse.setSubTrips( accumulateSubtrips( tripHopsArray));
+
+        return routeResponse;
+    }
+
+    private List<JsonTripHop> accumulateSubtrips(String[] tripHopsArray) {
+        int tripIndex = 0;
+        List<JsonTripHop> tripHops = new ArrayList<>();
 
         for (String rawTripInfo : tripHopsArray) {
             JsonTripHop tripHop = new JsonTripHop();
@@ -92,7 +99,7 @@ public class ShortestPathHandler {
             tripIndex++;
         }
 
-        return routeResponse;
+        return tripHops;
     }
 
     /**
@@ -104,8 +111,8 @@ public class ShortestPathHandler {
     private JsonTripInfo buildTripInfo(String planetNode) {
         JsonTripInfo originInfo = new JsonTripInfo();
         PlanetModel planetModel = planetQueryService.fetchById(planetNode);
-        originInfo.setNode(planetModel.getPlanetNode());
-        originInfo.setName(planetModel.getPlanetName());
+        originInfo.setNode(planetModel.getNode());
+        originInfo.setName(planetModel.getName());
         return originInfo;
     }
 

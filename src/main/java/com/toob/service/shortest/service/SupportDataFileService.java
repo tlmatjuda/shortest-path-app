@@ -10,6 +10,7 @@ import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.repository.RouteRepository;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,10 +62,15 @@ public class SupportDataFileService {
         log.info("Reading Excel File : {} which has {} sheets in total",
                 supportExcelFileResource.getFilename(), workbook.getNumberOfSheets());
 
-        // Extract information and then insert into the database.
-        extractPlanets(workbook);
-        extractRoutes(workbook);
-        loadDatabaseWithData();
+        List<Planet> planets = planetRepository.findAll();
+        if (CollectionUtils.isEmpty( planets)) {
+            extractPlanets(workbook);
+        }
+
+        List<Route> routes = routeRepository.findAll();
+        if (CollectionUtils.isEmpty( routes)) {
+            extractRoutes(workbook);
+        }
         workbook.close();
     }
 
@@ -117,6 +123,8 @@ public class SupportDataFileService {
             }
         });
 
+        planetRepository.saveAll(planetList);
+
         log.info("Extracted a total of {} PLANETS from the excel file", planetList.size());
     }
 
@@ -148,6 +156,8 @@ public class SupportDataFileService {
                 }
             }
         });
+
+        routeRepository.saveAll(routeList);
 
         log.info("Extracted a total of {} ROUTES from the excel file", routeList.size());
     }
