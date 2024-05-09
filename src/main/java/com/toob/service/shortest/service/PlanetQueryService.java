@@ -9,9 +9,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +55,7 @@ public class PlanetQueryService {
      * @param planetNode : Used to search for the data.
      * @return
      */
-    public PlanetModel fetchById( @NotBlank String planetNode) {
+    public PlanetModel fetchById(String planetNode) {
         PlanetModel responseModel = null;
 
         Optional<Planet> optionalPlanet = planetRepository.findById(planetNode);

@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Thu Mar 07 14:30:51 SAST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018e-18e5-181b-0000038a1940 
-on database directory memory:C:\Users\TMatjuda\workspace\toob\shortest-path-app\5527ddb5-a3e8-44b8-bc01-2308d2d50401 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@60e53b93 
-Loaded from file:/C:/Users/TMatjuda/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+Thu May 09 17:44:33 SAST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018f-5e07-1518-00000123ff40 
+on database directory memory:/Users/tlmatjuda/workspace/toob/thabo-matjuda/c819a54a-39df-40a8-a541-3e350257ff64 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190 
+Loaded from file:/Users/tlmatjuda/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Eclipse Adoptium
-java.runtime.version=17.0.10+7
-user.dir=C:\Users\TMatjuda\workspace\toob\shortest-path-app
-os.name=Windows 11
-os.arch=amd64
-os.version=10.0
+java.runtime.version=17.0.9+9
+user.dir=/Users/tlmatjuda/workspace/toob/thabo-matjuda
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.4.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
