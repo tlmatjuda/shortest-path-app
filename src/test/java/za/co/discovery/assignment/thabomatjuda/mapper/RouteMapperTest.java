@@ -31,26 +31,26 @@ class RouteMapperTest {
         assertTrue( optionalRoute.isPresent());
 
         Route route = optionalRoute.get();
-        assertNotNull( route.getRouteId());
-        assertNotNull( route.getDistanceInLightYears());
+        assertNotNull( route.getId());
+        assertNotNull( route.getDistance());
 
-        Planet planetOrigin = route.getPlanetOrigin();
+        Planet planetOrigin = route.getOrigin();
         assertNotNull(planetOrigin);
 
-        Planet planetDestination = route.getPlanetDestination();
+        Planet planetDestination = route.getDestination();
         assertNotNull(planetDestination);
 
         RouteModel routeModel = routeMapper.asModel(route);
         assertNotNull( routeModel);
 
-        assertEquals( route.getRouteId(), routeModel.getRouteId());
-        assertEquals( route.getDistanceInLightYears(), routeModel.getDistanceInLightYears());
+        assertEquals( route.getId(), routeModel.getRouteId());
+        assertEquals( route.getDistance(), routeModel.getDistanceInLightYears());
 
         PlanetModel originModel = routeModel.getPlanetOrigin();
         PlanetModel destinationModel = routeModel.getPlanetDestination();
 
-        assertEquals( planetOrigin.getPlanetNode(), originModel.getPlanetNode());
-        assertEquals( planetOrigin.getPlanetName(), originModel.getPlanetName());
+        assertEquals( planetOrigin.getNode(), originModel.getPlanetNode());
+        assertEquals( planetOrigin.getName(), originModel.getPlanetName());
 
     }
 

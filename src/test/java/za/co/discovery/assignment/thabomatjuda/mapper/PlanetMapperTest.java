@@ -4,7 +4,6 @@ import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
 import com.toob.service.shortest.repository.PlanetRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,8 @@ class PlanetMapperTest {
         PlanetModel model = planetMapper.asModel(planet);
 
         assertNotNull( model);
-        assertEquals( planet.getPlanetNode(), model.getPlanetNode());
-        assertEquals( planet.getPlanetName(), model.getPlanetName());
+        assertEquals( planet.getNode(), model.getPlanetNode());
+        assertEquals( planet.getName(), model.getPlanetName());
 
         Planet entity = planetMapper.asEntity(model);
         assertNotNull( entity);

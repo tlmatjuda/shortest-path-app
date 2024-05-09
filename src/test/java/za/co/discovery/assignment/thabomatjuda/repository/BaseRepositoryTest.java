@@ -19,20 +19,20 @@ public abstract class BaseRepositoryTest {
     @BeforeEach
     void setUp() {
         Planet earth = new Planet();
-        earth.setPlanetNode("A");
-        earth.setPlanetName("Earth");
+        earth.setNode("A");
+        earth.setName("Earth");
         Planet savedPlanetEarth = planetRepository.save(earth);
         assertNotNull( savedPlanetEarth);
-        assertNotNull( savedPlanetEarth.getPlanetNode());
-        assertNotNull( savedPlanetEarth.getPlanetName());
+        assertNotNull( savedPlanetEarth.getNode());
+        assertNotNull( savedPlanetEarth.getName());
 
 
         Planet moon = new Planet();
-        moon.setPlanetNode("B");
-        moon.setPlanetName("Moon");
+        moon.setNode("B");
+        moon.setName("Moon");
         Planet savedMoon = planetRepository.save(moon);
         assertNotNull( savedMoon);
-        assertNotNull( savedMoon.getPlanetNode());
-        assertNotNull( savedMoon.getPlanetName());
+        assertNotNull( savedMoon.getNode());
+        assertNotNull( savedMoon.getName());
     }
 }

@@ -30,10 +30,10 @@ class RouteRepositoryTest extends BaseRepositoryTest {
         assertTrue( optionalMoon.isPresent());
 
         Route route = new Route();
-        route.setRouteId(1);
-        route.setPlanetOrigin( optionalEarth.get());
-        route.setPlanetDestination( optionalMoon.get());
-        route.setDistanceInLightYears(0.44D);
+        route.setId(1);
+        route.setOrigin( optionalEarth.get());
+        route.setDestination( optionalMoon.get());
+        route.setDistance(0.44D);
 
         Route save = routeRepository.save(route);
         assertNotNull( save);

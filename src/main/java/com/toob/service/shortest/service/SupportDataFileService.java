@@ -10,6 +10,7 @@ import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.repository.RouteRepository;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Business logic responsible for the Startup process that imports data from the supplied Excel File to the In-Memory Database.
@@ -84,7 +86,7 @@ public class SupportDataFileService {
      */
     private Planet getPlanetByNodeFromList(String planetNodeArg) {
         Optional<Planet> foundPlanet = planetList.stream()
-                .filter(planet -> planet.getPlanetNode().equals(planetNodeArg)).findFirst();
+                .filter(planet -> planet.getNode().equals(planetNodeArg)).findFirst();
 
         return foundPlanet.orElse(null);
     }
@@ -141,7 +143,7 @@ public class SupportDataFileService {
                 row.forEach( cell -> buildRouteFromRow( cell, route));
 
                 // The nodes must exsits before we can save.
-                if (Objects.nonNull( route.getPlanetOrigin()) && Objects.nonNull( route.getPlanetDestination())) {
+                if (Objects.nonNull( route.getOrigin()) && Objects.nonNull( route.getDestination())) {
                     routeList.add(route);
                 }
             }
@@ -154,11 +156,11 @@ public class SupportDataFileService {
         int columnIndex = cell.getColumnIndex();
 
         if (PlanetConstants.EXCEL_COLUMN_PLANET_NODE == columnIndex) {
-            planet.setPlanetNode(dataFormatter.formatCellValue(cell).trim());
+            planet.setNode(dataFormatter.formatCellValue(cell).trim());
         }
 
         if (PlanetConstants.EXCEL_COLUMN_PLANET_NAME == columnIndex) {
-            planet.setPlanetName(dataFormatter.formatCellValue(cell).trim());
+            planet.setName(dataFormatter.formatCellValue(cell).trim());
         }
     }
 
@@ -173,24 +175,28 @@ public class SupportDataFileService {
         int columnIndex = cell.getColumnIndex();
 
         if (RoutesConstants.EXCEL_COLUMN_ROUTE_ID == columnIndex) {
-            route.setRouteId(Integer.parseInt(dataFormatter.formatCellValue(cell).trim()));
+            route.setId(Integer.parseInt(dataFormatter.formatCellValue(cell).trim()));
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_ORIGIN == columnIndex) {
-            String planetOriginKey = dataFormatter.formatCellValue(cell);
+            String planetOriginKey = dataFormatter.formatCellValue(cell).trim();
             Planet planetOrigin = getPlanetByNodeFromList(planetOriginKey);
-            route.setPlanetOrigin(planetOrigin);
+            if (Objects.nonNull(planetOrigin)) {
+                route.setOrigin(planetOrigin);
+            }
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_DESTINATION == columnIndex) {
-            String planetDestinationKey = dataFormatter.formatCellValue(cell);
+            String planetDestinationKey = dataFormatter.formatCellValue(cell).trim();
             Planet planetDestination = getPlanetByNodeFromList(planetDestinationKey);
-            route.setPlanetDestination(planetDestination);
+            if (Objects.nonNull(planetDestination)) {
+                route.setDestination(planetDestination);
+            }
         }
 
         if (RoutesConstants.EXCEL_COLUMN_PLANET_DISTANCE == columnIndex) {
             String distanceText = dataFormatter.formatCellValue(cell).trim().replace(SpecialCharacters.COMMA, SpecialCharacters.PERIOD);
-            route.setDistanceInLightYears(Double.parseDouble(distanceText));
+            route.setDistance(Double.parseDouble(distanceText));
         }
     }
 

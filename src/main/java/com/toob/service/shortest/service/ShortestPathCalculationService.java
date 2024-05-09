@@ -92,7 +92,7 @@ public class ShortestPathCalculationService {
     private void addVertices() {
         List<Planet> planets = planetRepository.findAll();
         if (CollectionUtils.isNotEmpty(planets)) {
-            planets.forEach(planet -> graph.addVertex(planet.getPlanetNode()));
+            planets.forEach(planet -> graph.addVertex(planet.getNode()));
         }
     }
 
@@ -105,15 +105,15 @@ public class ShortestPathCalculationService {
         List<Route> routeList = routeRepository.findAll();
 
         routeList.forEach( routeRecord -> {
-            String originNode = (Objects.nonNull(routeRecord.getPlanetOrigin())) ? routeRecord.getPlanetOrigin().getPlanetNode() : StringUtils.EMPTY;
-            String destinationNode = (Objects.nonNull(routeRecord.getPlanetDestination())) ? routeRecord.getPlanetDestination().getPlanetNode() : StringUtils.EMPTY;
+            String originNode = (Objects.nonNull(routeRecord.getOrigin())) ? routeRecord.getOrigin().getNode() : StringUtils.EMPTY;
+            String destinationNode = (Objects.nonNull(routeRecord.getDestination())) ? routeRecord.getDestination().getNode() : StringUtils.EMPTY;
 
             // Validating that edge nodes are different
             if (!originNode.equals(destinationNode)) {
                 edge.set( graph.addEdge(originNode, destinationNode));
             }
             // Adding edge weight
-            addEdgeWeight( edge.get(), routeRecord.getDistanceInLightYears());
+            addEdgeWeight( edge.get(), routeRecord.getDistance());
         });
     }
 

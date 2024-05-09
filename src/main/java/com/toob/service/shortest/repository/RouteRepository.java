@@ -18,10 +18,10 @@ import java.util.List;
 public interface RouteRepository extends JpaRepository<Route, Integer> {
 
     @Modifying
-    @Query("DELETE FROM Route r WHERE r.planetOrigin.planetNode = :originNode OR r.planetDestination.planetNode = :destinationNode")
+    @Query("DELETE FROM Route r WHERE r.origin.node = :originNode OR r.destination.node = :destinationNode")
     void deleteRoutesByPlanetOriginAndPlanetDestination(String originNode, String destinationNode);
 
-    @Query("SELECT r FROM Route r WHERE r.planetOrigin.planetNode = :originNode OR r.planetDestination.planetNode = :destinationNode")
+    @Query("SELECT r FROM Route r WHERE r.origin.node = :originNode OR r.destination.node = :destinationNode")
     List<Route> findByPlanetOriginAndPlanetDestination(String originNode, String destinationNode);
 
 }

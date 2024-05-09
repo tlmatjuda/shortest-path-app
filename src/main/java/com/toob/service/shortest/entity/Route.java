@@ -5,29 +5,32 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 /**
  * Represents our Routes Table.
  * @author : Thabo Matjuda
  */
 @Entity
-@Table( name = "Routes")
+@Table( name = "routes")
 @Getter
 @Setter
-public class Route {
+public class Route implements Serializable {
 
     @Id
-    @Column(name = "RouteId")
-    private Integer routeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn( name = "PlanetOrigin", referencedColumnName = "Node")
-    private Planet planetOrigin;
+    @JoinColumn(name = "origin", referencedColumnName = "node")
+    private Planet origin;
 
     @ManyToOne
-    @JoinColumn(name = "PlanetDestination", referencedColumnName = "Node")
-    private Planet planetDestination;
+    @JoinColumn(name = "destination", referencedColumnName = "Node")
+    private Planet destination;
 
-    @Column(name = "DistanceInLightYears")
-    private Double distanceInLightYears;
+    @Column(name = "distance")
+    private Double distance;
 
 }

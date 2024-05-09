@@ -12,16 +12,16 @@ import java.io.Serializable;
  * @author : Thabo Matjuda
  */
 @Entity
-@Table(name = "PlanetNames")
+@Table(name = "planets")
 @Getter
 @Setter
 public class Planet implements Serializable {
 
     @Id
-    @Column(name = "Node", unique = true)
-    private String planetNode;
+    @Column(name = "node", length = 3, unique = true, nullable = false)
+    private String node;
 
-    @Column(name = "Name")
-    private String planetName;
+    @Column(name = "name", length = 100, unique = true, nullable = false)
+    private String name;
 
 }
