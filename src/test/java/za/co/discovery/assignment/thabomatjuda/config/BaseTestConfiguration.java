@@ -1,6 +1,6 @@
 package za.co.discovery.assignment.thabomatjuda.config;
 
-import com.toob.service.shortest.startup.BootstrapOperations;
+import com.toob.service.shortest.StartupProcesses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,7 +16,7 @@ import static za.co.discovery.assignment.thabomatjuda.config.BaseTestConfigurati
 @ComponentScan(
         basePackages = {APP_BASE_PACKAGE},
         excludeFilters = {
-            @ComponentScan.Filter( type= FilterType.ASSIGNABLE_TYPE, value= BootstrapOperations.class)
+            @ComponentScan.Filter( type= FilterType.ASSIGNABLE_TYPE, value= StartupProcesses.class)
         }
 )
 public class BaseTestConfiguration {

@@ -3,7 +3,7 @@ package za.co.discovery.assignment.thabomatjuda.service;
 import com.toob.service.shortest.constants.RoutesConstants;
 import com.toob.service.shortest.exception.ShortestPathCalculationException;
 import com.toob.service.shortest.model.ShortestPathResult;
-import com.toob.service.shortest.service.ShortestPathCalculationService;
+import com.toob.service.shortest.service.CalculationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -15,16 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @SpringBootTest
-class ShortestPathCalculationServiceTest {
+class CalculationServiceTest {
 
     @Autowired
-    private ShortestPathCalculationService shortestPathCalculationService;
+    private CalculationService calculationService;
 
     @Test
     void shouldCalculateShortestPath() {
         final String originKey = "A";
         final String destinationKey = "F";
-        ShortestPathResult calculationResponse = shortestPathCalculationService.run(originKey, destinationKey);
+        ShortestPathResult calculationResponse = calculationService.run(originKey, destinationKey);
         assertNotNull( calculationResponse);
 
         String path = calculationResponse.getPath();
@@ -40,14 +40,14 @@ class ShortestPathCalculationServiceTest {
     @Test
     void shouldFailWhenArgumentIsMissing() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run(StringUtils.EMPTY, StringUtils.EMPTY));
+                () -> calculationService.run(StringUtils.EMPTY, StringUtils.EMPTY));
         assertEquals(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND, thrown.getMessage());
     }
 
     @Test
     void shouldFailWhenDestinationDoesNotExist() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> shortestPathCalculationService.run("AZ", "ZA"));
+                () -> calculationService.run("AZ", "ZA"));
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }

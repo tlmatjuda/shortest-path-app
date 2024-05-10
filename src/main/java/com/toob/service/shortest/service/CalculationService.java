@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 @Slf4j
 @Service
-public class ShortestPathCalculationService {
+public class CalculationService {
 
     private final PlanetRepository planetRepository;
     private final RouteRepository routeRepository;
@@ -40,7 +40,7 @@ public class ShortestPathCalculationService {
      * @param planetRepository
      * @param routeRepository
      */
-    public ShortestPathCalculationService(PlanetRepository planetRepository, RouteRepository routeRepository) {
+    public CalculationService(PlanetRepository planetRepository, RouteRepository routeRepository) {
         this.planetRepository = planetRepository;
         this.routeRepository = routeRepository;
     }

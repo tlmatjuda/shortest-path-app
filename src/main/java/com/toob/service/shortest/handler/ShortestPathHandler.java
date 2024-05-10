@@ -5,7 +5,7 @@ import com.toob.service.shortest.constants.SpecialCharacters;
 import com.toob.service.shortest.model.*;
 import com.toob.service.shortest.model.planet.PlanetModel;
 import com.toob.service.shortest.service.PlanetQueryService;
-import com.toob.service.shortest.service.ShortestPathCalculationService;
+import com.toob.service.shortest.service.CalculationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -27,16 +27,16 @@ public class ShortestPathHandler {
     public static final int ORIGIN_INDEX = 0;
     public static final int DESTINATION_INDEX = 1;
 
-    private final ShortestPathCalculationService shortestPathCalculationService;
+    private final CalculationService calculationService;
     private final PlanetQueryService planetQueryService;
 
     /**
      * Contructor injection of the required dependencies.
-     * @param shortestPathCalculationService
+     * @param calculationService
      * @param planetQueryService
      */
-    public ShortestPathHandler(ShortestPathCalculationService shortestPathCalculationService, PlanetQueryService planetQueryService) {
-        this.shortestPathCalculationService = shortestPathCalculationService;
+    public ShortestPathHandler(CalculationService calculationService, PlanetQueryService planetQueryService) {
+        this.calculationService = calculationService;
         this.planetQueryService = planetQueryService;
     }
 
@@ -49,7 +49,7 @@ public class ShortestPathHandler {
         String origin = routeRequest.getOrigin();
         String destination = routeRequest.getDestination();
 
-        ShortestPathResult calculationResult = shortestPathCalculationService.run(origin, destination);
+        ShortestPathResult calculationResult = calculationService.run(origin, destination);
 
         return buildRouteResponseBasedOnResults(calculationResult);
     }

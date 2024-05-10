@@ -1,6 +1,6 @@
-package com.toob.service.shortest.startup;
+package com.toob.service.shortest;
 
-import com.toob.service.shortest.service.ShortestPathCalculationService;
+import com.toob.service.shortest.service.CalculationService;
 import com.toob.service.shortest.service.SupportDataFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -14,20 +14,20 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class BootstrapOperations implements CommandLineRunner {
+public class StartupProcesses implements CommandLineRunner {
 
 
     private final SupportDataFileService supportDataFileService;
-    private final ShortestPathCalculationService shortestPathCalculationService;
+    private final CalculationService calculationService;
 
     /**
      * Constructor injection of required depenedencies
      * @param supportDataFileService :
-     * @param shortestPathCalculationService
+     * @param calculationService
      */
-    public BootstrapOperations(SupportDataFileService supportDataFileService, ShortestPathCalculationService shortestPathCalculationService) {
+    public StartupProcesses(SupportDataFileService supportDataFileService, CalculationService calculationService) {
         this.supportDataFileService = supportDataFileService;
-        this.shortestPathCalculationService = shortestPathCalculationService;
+        this.calculationService = calculationService;
     }
 
     /**
@@ -42,7 +42,7 @@ public class BootstrapOperations implements CommandLineRunner {
        supportDataFileService.process();
 
         // Initialises the calculation information that we will need when using the logic in here.
-       shortestPathCalculationService.initialise();
+       calculationService.initialise();
     }
 
 
