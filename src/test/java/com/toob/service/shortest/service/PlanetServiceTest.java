@@ -1,12 +1,10 @@
-package za.co.discovery.assignment.thabomatjuda.service;
+package com.toob.service.shortest.service;
 
 import com.toob.service.shortest.model.planet.PlanetModel;
-import com.toob.service.shortest.service.PlanetQueryService;
-import com.toob.service.shortest.service.PlanetService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.co.discovery.assignment.thabomatjuda.util.TestDataUtil;
+import com.toob.service.shortest.util.TestDataUtil;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;

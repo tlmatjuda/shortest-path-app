@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.util;
+package com.toob.service.shortest.util;
 
 
 import com.toob.service.shortest.model.planet.PlanetModel;

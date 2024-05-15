@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.service;
+package com.toob.service.shortest.service;
 
 import com.toob.service.shortest.constants.RoutesConstants;
 import com.toob.service.shortest.exception.ShortestPathCalculationException;

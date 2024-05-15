@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda;
+package com.toob.service.shortest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.rest;
+package com.toob.service.shortest.rest;
 
 
 import com.toob.service.shortest.entity.Route;

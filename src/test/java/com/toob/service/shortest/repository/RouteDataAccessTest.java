@@ -1,8 +1,7 @@
-package za.co.discovery.assignment.thabomatjuda.repository;
+package com.toob.service.shortest.repository;
 
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
-import com.toob.service.shortest.repository.RouteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @SpringBootTest
-class RouteRepositoryTest extends BaseRepositoryTest {
+class RouteDataAccessTest extends AbstractDataAccessTest {
 
     @Autowired
     private RouteRepository routeRepository;

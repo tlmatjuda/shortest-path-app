@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.model;
+package com.toob.service.shortest.model;
 
 import com.toob.service.shortest.model.TechnicalResponse;
 import org.junit.jupiter.api.Test;

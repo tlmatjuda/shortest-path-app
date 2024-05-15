@@ -1,4 +1,4 @@
-package za.co.discovery.assignment.thabomatjuda.mapper;
+package com.toob.service.shortest.mapper;
 
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
