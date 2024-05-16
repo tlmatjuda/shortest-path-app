@@ -1,29 +1,31 @@
 package com.toob.service.shortest.repository;
 
-import com.toob.service.shortest.BaseTestConfiguration;
 import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.service.CalculationService;
 import com.toob.service.shortest.service.SupportDataFileService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
 import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @Testcontainers
 @ActiveProfiles("test-containers")
 @ExtendWith(SystemStubsExtension.class)
-public abstract class AbstractDataAccessTest {
+public abstract class AbstractRepositoryTest {
 
     @SystemStub
     private static EnvironmentVariables ENV_VARS = new EnvironmentVariables(
@@ -37,6 +39,7 @@ public abstract class AbstractDataAccessTest {
 
     @MockBean
     protected SupportDataFileService supportDataFileService;
+
 
     @Autowired
     protected PlanetRepository planetRepository;
@@ -59,4 +62,19 @@ public abstract class AbstractDataAccessTest {
         assertNotNull( savedMoon.getNode());
         assertNotNull( savedMoon.getName());
     }
+
+    protected @NotNull Optional<Planet> findSavedDestination() {
+        Optional<Planet> optionalMoon = planetRepository.findById("B");
+        assertTrue( optionalMoon.isPresent());
+        return optionalMoon;
+    }
+
+    protected @NotNull Optional<Planet> findSavedOrigin() {
+        Optional<Planet> optionalEarth = planetRepository.findById("A");
+        assertTrue( optionalEarth.isPresent());
+        return optionalEarth;
+    }
+
+
+
 }

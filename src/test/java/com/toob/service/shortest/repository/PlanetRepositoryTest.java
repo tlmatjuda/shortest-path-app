@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @Slf4j
-class PlanetRepositoryTest extends AbstractDataAccessTest {
+class PlanetRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     void shouldFindPlanets() {
