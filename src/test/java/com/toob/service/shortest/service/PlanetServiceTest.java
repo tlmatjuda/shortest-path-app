@@ -20,7 +20,7 @@ class PlanetServiceTest {
 
 
     @Test
-    void shouldSave() throws Exception {
+    void shouldSave() {
         PlanetModel planetModel = TestDataUtil.buildPlanet();
         PlanetModel save = planetService.save(planetModel);
         assertNotNull( save);

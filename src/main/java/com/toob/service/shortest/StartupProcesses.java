@@ -44,6 +44,4 @@ public class StartupProcesses implements CommandLineRunner {
         // Initialises the calculation information that we will need when using the logic in here.
        calculationService.initialise();
     }
-
-
 }

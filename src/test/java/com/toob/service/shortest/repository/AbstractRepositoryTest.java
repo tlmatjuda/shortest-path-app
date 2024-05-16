@@ -27,9 +27,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(SystemStubsExtension.class)
 public abstract class AbstractRepositoryTest {
 
+    public static final String ENV_VAR_TESTCONTAINERS_RYUK_DISABLED = "TESTCONTAINERS_RYUK_DISABLED";
+
     @SystemStub
-    private static EnvironmentVariables ENV_VARS = new EnvironmentVariables(
-            "TESTCONTAINERS_RYUK_DISABLED", "true");
+    private static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
 
     @MockBean
     protected StartupProcesses startupProcesses;
@@ -39,7 +40,6 @@ public abstract class AbstractRepositoryTest {
 
     @MockBean
     protected SupportDataFileService supportDataFileService;
-
 
     @Autowired
     protected PlanetRepository planetRepository;
@@ -62,19 +62,4 @@ public abstract class AbstractRepositoryTest {
         assertNotNull( savedMoon.getNode());
         assertNotNull( savedMoon.getName());
     }
-
-    protected @NotNull Optional<Planet> findSavedDestination() {
-        Optional<Planet> optionalMoon = planetRepository.findById("B");
-        assertTrue( optionalMoon.isPresent());
-        return optionalMoon;
-    }
-
-    protected @NotNull Optional<Planet> findSavedOrigin() {
-        Optional<Planet> optionalEarth = planetRepository.findById("A");
-        assertTrue( optionalEarth.isPresent());
-        return optionalEarth;
-    }
-
-
-
 }
