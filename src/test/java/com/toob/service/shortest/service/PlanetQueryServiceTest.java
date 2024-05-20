@@ -3,8 +3,6 @@ package com.toob.service.shortest.service;
 import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.model.planet.PlanetModel;
-import com.toob.service.shortest.rest.AbstractServiceTest;
-import com.toob.service.shortest.service.PlanetQueryService;
 import lombok.SneakyThrows;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.BeforeEach;

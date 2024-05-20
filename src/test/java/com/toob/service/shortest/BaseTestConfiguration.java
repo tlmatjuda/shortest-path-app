@@ -17,4 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         basePackageClasses = {Application.class},
         excludeFilters = @ComponentScan.Filter( type = FilterType.ASSIGNABLE_TYPE,
                 classes = {StartupProcesses.class, CalculationService.class, SupportDataFileService.class}))
-public class BaseTestConfiguration {}
+public class BaseTestConfiguration {
+
+
+
+}

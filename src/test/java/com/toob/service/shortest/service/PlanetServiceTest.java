@@ -2,7 +2,6 @@ package com.toob.service.shortest.service;
 
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.model.planet.PlanetModel;
-import com.toob.service.shortest.rest.AbstractServiceTest;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;

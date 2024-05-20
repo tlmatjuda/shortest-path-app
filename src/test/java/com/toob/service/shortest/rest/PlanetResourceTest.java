@@ -1,12 +1,16 @@
 package com.toob.service.shortest.rest;
 
+import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
 import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.rest.PlanetResource;
 import com.toob.service.shortest.service.PlanetQueryService;
 import com.toob.service.shortest.service.PlanetService;
+import com.toob.service.shortest.util.TestDataUtil;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,87 +20,91 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atMostOnce;
 
 
 @SpringBootTest
-class PlanetResourceTest {
-
-    @MockBean
-    private PlanetService planetService;
-
-    @MockBean
-    private PlanetQueryService planetQueryService;
+class PlanetResourceTest extends AbstractResourceTest {
 
     @Autowired
     private PlanetResource planetResource;
-
-    @Autowired
-    private PlanetRepository planetRepository;
 
     @Autowired
     private PlanetMapper planetMapper;
 
     private static MockHttpServletRequest request;
 
+    static Planet earth;
+    static Planet moon;
+    static Planet jupiter;
+    static Planet venus;
+
     @BeforeAll
     static void beforeAll() {
+        earth = TestDataUtil.mockPlanet("A", "Earth");
+        moon = TestDataUtil.mockPlanet("B", "Moon");
+        jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
+        venus = TestDataUtil.mockPlanet("D", "Venus");
     }
 
     @Test
-    void shouldFetchAll() throws Exception {
-        List<PlanetModel> mockedPlanetList = planetMapper.asModel(planetRepository.findAll());
+    @SneakyThrows
+    void shouldFetchAll() {
+        List<PlanetModel> mockedPlanetList = planetMapper.asModel( Lists.newArrayList(earth, moon, jupiter, venus) );
         when(planetQueryService.fetchAll()).thenReturn(mockedPlanetList);
 
         ResponseEntity<Object> responseEntity = planetResource.fetchAll();
         assertNotNull( responseEntity);
         assertEquals(HttpStatus.OK.value(), responseEntity.getStatusCodeValue());
         assertTrue( responseEntity.hasBody());
+        verify(planetQueryService, atMostOnce()).fetchAll();
     }
 
     @Test
-    void shouldSave() throws Exception {
-        Planet planet = planetRepository.findById("A").get();
-        PlanetModel planetModel = planetMapper.asModel(planet);
+    @SneakyThrows
+    void shouldSave() {
+        PlanetModel jupiterModel = planetMapper.asModel(jupiter);
+        when(planetService.save( any(PlanetModel.class))).thenReturn(jupiterModel);
 
-        when(planetService.save( any(PlanetModel.class))).thenReturn(planetModel);
-
-        ResponseEntity<Object> responseEntity = planetResource.save(planetModel);
+        ResponseEntity<Object> responseEntity = planetResource.save(jupiterModel);
         assertNotNull( responseEntity);
         assertEquals(HttpStatus.CREATED.value(), responseEntity.getStatusCodeValue());
         assertFalse( responseEntity.hasBody());
     }
 
     @Test
-    void shouldUpdate() throws Exception {
-        final String earthId = "A";
-        Planet planet = planetRepository.findById(earthId).get();
-        PlanetModel planetModel = planetMapper.asModel(planet);
+    @SneakyThrows
+    void shouldUpdate() {
+        PlanetModel earthModel = planetMapper.asModel(earth);
 
-        when(planetService.save( any(PlanetModel.class))).thenReturn(planetModel);
-        when(planetQueryService.fetchById( anyString())).thenReturn(planetModel);
+        when(planetQueryService.fetchById( anyString())).thenReturn(earthModel);
+        when(planetService.save( any(PlanetModel.class))).thenReturn(earthModel);
 
-        ResponseEntity<Object> responseEntity = planetResource.update(earthId, planetModel);
+        ResponseEntity<Object> responseEntity = planetResource.update(earthModel.getNode(), earthModel);
         assertNotNull( responseEntity);
         assertEquals(HttpStatus.OK.value(), responseEntity.getStatusCodeValue());
         assertFalse( responseEntity.hasBody());
+
+        verify(planetQueryService, atMostOnce()).fetchById( earthModel.getNode());
+        verify(planetService, atMostOnce()).save( earthModel);
     }
 
     @Test
-    void shoulDeleteById() throws Exception {
-        final String earthId = "A";
-
+    @SneakyThrows
+    void shoulDeleteById() {
         doNothing().when(planetService).deleteById( anyString());
 
-        ResponseEntity<Object> responseEntity = planetResource.deleteById(earthId);
+        ResponseEntity<Object> responseEntity = planetResource.deleteById(earth.getNode());
         assertNotNull( responseEntity);
         assertEquals(HttpStatus.OK.value(), responseEntity.getStatusCodeValue());
         assertFalse( responseEntity.hasBody());
+        verify(planetService, atMostOnce()).deleteById( earth.getNode());
     }
 }

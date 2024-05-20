@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.model.route.RouteMinimalModel;
-import com.toob.service.shortest.rest.AbstractServiceTest;
 import lombok.SneakyThrows;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
