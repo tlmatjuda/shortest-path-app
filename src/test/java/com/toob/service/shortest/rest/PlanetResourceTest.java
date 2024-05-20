@@ -47,8 +47,6 @@ class PlanetResourceTest {
 
     @BeforeAll
     static void beforeAll() {
-//        request = new MockHttpServletRequest();
-//        RequestContextHolder.setRequestAttributes( new ServletRequestAttributes(request));
     }
 
     @Test

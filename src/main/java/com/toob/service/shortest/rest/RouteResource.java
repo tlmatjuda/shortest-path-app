@@ -37,7 +37,7 @@ public class RouteResource {
      */
     @GetMapping
     public ResponseEntity<Object> fetchAll() {
-        List<RouteModel> routeModels = routeService.fetchAll();
+        List<RouteMinimalModel> routeModels = routeService.fetchAll();
         return new ResponseEntity<>(routeModels, HttpStatus.OK);
     }
 
@@ -48,7 +48,7 @@ public class RouteResource {
      */
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody RouteMinimalModel routeMinimalModel) {
-        RouteModel savedRoute = routeService.save(routeMinimalModel);
+        RouteMinimalModel savedRoute = routeService.save(routeMinimalModel);
         return new ResponseEntity<>(savedRoute, HttpStatus.CREATED);
     }
 
@@ -60,7 +60,7 @@ public class RouteResource {
      */
     @PutMapping("/{routeId}")
     public ResponseEntity<Object> update(@PathVariable Integer routeId, @RequestBody RouteMinimalModel routeMinimalModel) {
-        RouteModel routeModel = routeService.fetchById(routeId);
+        RouteMinimalModel routeModel = routeService.fetchById(routeId);
         if (Objects.nonNull( routeModel)) {
             routeService.save(routeMinimalModel);
         }

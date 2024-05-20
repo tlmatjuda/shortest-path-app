@@ -48,11 +48,11 @@ public class RouteService {
      * Fetches all the Routes Entries form the database.
      * @return
      */
-    public List<RouteModel> fetchAll() {
-        List<RouteModel> responseModel = null;
+    public List<RouteMinimalModel> fetchAll() {
+        List<RouteMinimalModel> responseModel = null;
         List<Route> routes = routeRepository.findAll();
         if (CollectionUtils.isNotEmpty( routes)) {
-            responseModel = routeMapper.asModel( routes);
+            responseModel = routeMapper.asMinimalModel( routes);
         }
 
         return responseModel;
@@ -63,7 +63,7 @@ public class RouteService {
      * @param routeMinimalModel : Route information to save.
      * @return
      */
-    public RouteModel save(@Valid RouteMinimalModel routeMinimalModel) {
+    public RouteMinimalModel save(@Valid RouteMinimalModel routeMinimalModel) {
 
         RouteModel routeModel = new RouteModel();
         routeModel.setId(routeMinimalModel.getId());
@@ -75,8 +75,9 @@ public class RouteService {
         PlanetModel planetModel = planetQueryService.fetchById(routeMinimalModel.getDestination());
         routeModel.setDestination( planetModel);
 
-        Route route = routeRepository.save(routeMapper.asEntity(routeModel));
-        return routeMapper.asModel( route);
+        Route entityToSave = routeMapper.asEntity(routeModel);
+        Route saved = routeRepository.save(entityToSave);
+        return routeMapper.asMinimalModel( saved);
     }
 
     /**
@@ -84,12 +85,12 @@ public class RouteService {
      * @param routeId : The route Id to search by
      * @return
      */
-    public RouteModel fetchById( @NotNull Integer routeId) {
-        RouteModel responseModel = null;
+    public RouteMinimalModel fetchById( @NotNull Integer routeId) {
+        RouteMinimalModel responseModel = null;
 
         Optional<Route> optionalRoute = routeRepository.findById(routeId);
         if ( optionalRoute.isPresent()) {
-            responseModel = routeMapper.asModel( optionalRoute.get());
+            responseModel = routeMapper.asMinimalModel( optionalRoute.get());
         }
 
         return responseModel;
