@@ -37,20 +37,4 @@ public abstract class AbstractServiceTest {
     @MockBean
     protected Flyway flyway;
 
-    protected static Planet mockPlanet(String node, String name) {
-        Planet planet = new Planet();
-        planet.setNode(node);
-        planet.setName(name);
-        return planet;
-    }
-
-    protected static Route mockRoute(Integer id, Planet origin, Planet destination, Double distance) {
-        Route route = new Route();
-        route.setId(id);
-        route.setOrigin(origin);
-        route.setDestination(destination);
-        route.setDistance(distance);
-        return route;
-    }
-
 }

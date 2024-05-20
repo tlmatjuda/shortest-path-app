@@ -26,7 +26,7 @@ class PlanetServiceTest extends AbstractServiceTest {
 
     @Test
     void shouldSave() {
-        when( planetRepository.save( any(Planet.class))).thenReturn( mockPlanet("A", "Earth"));
+        when( planetRepository.save( any(Planet.class))).thenReturn( TestDataUtil.mockPlanet("A", "Earth"));
         PlanetModel planetModel = TestDataUtil.buildPlanet();
         PlanetModel save = planetService.save(planetModel);
         assertNotNull( save);
