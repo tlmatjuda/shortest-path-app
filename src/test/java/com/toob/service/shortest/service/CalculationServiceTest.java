@@ -3,7 +3,6 @@ package com.toob.service.shortest.service;
 import com.toob.service.shortest.constants.RoutesConstants;
 import com.toob.service.shortest.exception.ShortestPathCalculationException;
 import com.toob.service.shortest.model.ShortestPathResult;
-import com.toob.service.shortest.service.CalculationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -12,13 +11,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @Slf4j
 @SpringBootTest
 class CalculationServiceTest {
 
     @Autowired
     private CalculationService calculationService;
+
+
+    @Test
+    void shouldInject() {
+        assertNotNull( calculationService);
+    }
 
     @Test
     void shouldCalculateShortestPath() {
@@ -51,4 +55,5 @@ class CalculationServiceTest {
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }
+
 }

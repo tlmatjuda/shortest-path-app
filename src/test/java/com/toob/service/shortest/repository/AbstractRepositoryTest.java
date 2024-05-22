@@ -4,33 +4,38 @@ import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.service.CalculationService;
 import com.toob.service.shortest.service.SupportDataFileService;
-import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
 import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest
-@Testcontainers
-@ActiveProfiles("test-containers")
 @ExtendWith(SystemStubsExtension.class)
 public abstract class AbstractRepositoryTest {
 
     public static final String ENV_VAR_TESTCONTAINERS_RYUK_DISABLED = "TESTCONTAINERS_RYUK_DISABLED";
+    public static final String TEST_DOCKER_CONTAINER_POSTGRES_IMAGE_NAME = "postgres:16-alpine3.19";
 
     @SystemStub
-    private static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
+    protected static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
+
+    @Container
+    protected static final PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(TEST_DOCKER_CONTAINER_POSTGRES_IMAGE_NAME)
+            .withDatabaseName("integration-tests-db")
+            .withUsername("username")
+            .withPassword("password");
 
     @MockBean
     protected StartupProcesses startupProcesses;
@@ -62,4 +67,12 @@ public abstract class AbstractRepositoryTest {
         assertNotNull( savedMoon.getNode());
         assertNotNull( savedMoon.getName());
     }
+
+    @DynamicPropertySource
+    static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {
+        dynamicPropertyRegistry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
+        dynamicPropertyRegistry.add("spring.datasource.username", postgresContainer::getUsername);
+        dynamicPropertyRegistry.add("spring.datasource.password", postgresContainer::getPassword);
+    }
+
 }
