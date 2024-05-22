@@ -1,19 +1,24 @@
 package com.toob.service.shortest.service;
 
+import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.constants.RoutesConstants;
 import com.toob.service.shortest.exception.ShortestPathCalculationException;
 import com.toob.service.shortest.model.ShortestPathResult;
+import com.toob.service.shortest.repository.PlanetRepository;
+import com.toob.service.shortest.repository.RouteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @SpringBootTest
-class CalculationServiceTest {
+class CalculationServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
 
     @Autowired
     private CalculationService calculationService;
@@ -55,5 +60,26 @@ class CalculationServiceTest {
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }
+
+
+
+
+    /**
+     * Mocking Beans we don't want
+     */
+    @MockBean
+    private PlanetRepository planetRepository;
+
+    @MockBean
+    private RouteRepository routeRepository;
+
+    @MockBean
+    private StartupProcesses startupProcesses;
+
+    @MockBean
+    private SupportDataFileService supportDataFileService;
+
+    @MockBean
+    private Flyway flyway;
 
 }
