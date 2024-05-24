@@ -1,15 +1,25 @@
 package com.toob.service.shortest.mapper;
 
+import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.mapper.RouteMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.model.route.RouteMinimalModel;
 import com.toob.service.shortest.model.route.RouteModel;
+import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.repository.RouteRepository;
+import com.toob.service.shortest.service.SupportDataFileService;
+import com.toob.service.shortest.util.MockedRoutesUtil;
 import org.apache.commons.collections4.CollectionUtils;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,31 +27,37 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@EnableAutoConfiguration( exclude = {
+        FlywayAutoConfiguration.class,
+        DataSourceAutoConfiguration.class,
+})
 class RouteMapperTest {
+
+    /**
+     * Mocking Beans we don't want
+     */
+    @MockBean
+    private PlanetRepository planetRepository;
+
+    @MockBean
+    private RouteRepository routeRepository;
+
+    @MockBean
+    private StartupProcesses startupProcesses;
+
+    @MockBean
+    private SupportDataFileService supportDataFileService;
+
+    @MockBean
+    private Flyway flyway;
 
     @Autowired
     private RouteMapper routeMapper;
 
-    @Autowired
-    private RouteRepository routeRepository;
-
     @Test
     void shouldMap() {
-        Optional<Route> optionalRoute = routeRepository.findById(7);
-        assertTrue( optionalRoute.isPresent());
-
-        Route route = optionalRoute.get();
-        assertNotNull( route.getId());
-        assertNotNull( route.getDistance());
-
-        Planet planetOrigin = route.getOrigin();
-        assertNotNull(planetOrigin);
-
-        Planet planetDestination = route.getDestination();
-        assertNotNull(planetDestination);
-
+        Route route = MockedRoutesUtil.fetchById(1);
         RouteModel routeModel = routeMapper.asModel(route);
-        assertNotNull( routeModel);
 
         assertEquals( route.getId(), routeModel.getId());
         assertEquals( route.getDistance(), routeModel.getDistance());
@@ -49,18 +65,22 @@ class RouteMapperTest {
         PlanetModel originModel = routeModel.getOrigin();
         PlanetModel destinationModel = routeModel.getDestination();
 
-        assertEquals( planetOrigin.getNode(), originModel.getNode());
-        assertEquals( planetOrigin.getName(), originModel.getName());
+        assertEquals( route.getOrigin().getNode(), originModel.getNode());
+        assertEquals( route.getOrigin().getName(), originModel.getName());
+        assertEquals( route.getDestination().getNode(), destinationModel.getNode());
+        assertEquals( route.getDestination().getName(), destinationModel.getName());
 
+        RouteMinimalModel minimalModel = routeMapper.asMinimalModel(route);
+        assertEquals( route.getId(), minimalModel.getId());
+        assertEquals( route.getDistance(), minimalModel.getDistance());
     }
 
 
     @Test
     void shouldMapCollection() {
-        List<Route> routes = routeRepository.findAll();
-        assertTrue( CollectionUtils.isNotEmpty( routes));
-
+        List<Route> routes = MockedRoutesUtil.fetchAll();
         List<RouteModel> modelList = routeMapper.asModel(routes);
+
         assertTrue( CollectionUtils.isNotEmpty( modelList));
         assertEquals( modelList.size(), routes.size());
 

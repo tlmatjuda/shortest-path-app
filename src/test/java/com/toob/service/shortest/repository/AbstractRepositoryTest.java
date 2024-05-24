@@ -3,7 +3,11 @@ package com.toob.service.shortest.repository;
 import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.service.CalculatorService;
+import com.toob.service.shortest.service.RouteService;
 import com.toob.service.shortest.service.SupportDataFileService;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
+import com.toob.service.shortest.util.MockedRoutesUtil;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,26 +47,19 @@ public abstract class AbstractRepositoryTest {
     @MockBean
     protected SupportDataFileService supportDataFileService;
 
+    @MockBean
+    protected Flyway flyway;
+
     @Autowired
     protected PlanetRepository planetRepository;
 
+    @Autowired
+    protected RouteRepository routeRepository;
+
     @BeforeEach
     protected void setUp() {
-        Planet earth = new Planet();
-        earth.setNode("A");
-        earth.setName("Earth");
-        Planet savedPlanetEarth = planetRepository.save(earth);
-        assertNotNull( savedPlanetEarth);
-        assertNotNull( savedPlanetEarth.getNode());
-        assertNotNull( savedPlanetEarth.getName());
-
-        Planet moon = new Planet();
-        moon.setNode("B");
-        moon.setName("Moon");
-        Planet savedMoon = planetRepository.save(moon);
-        assertNotNull( savedMoon);
-        assertNotNull( savedMoon.getNode());
-        assertNotNull( savedMoon.getName());
+        planetRepository.saveAll(MockedPlanetsUtil.fetchAll());
+        routeRepository.saveAll(MockedRoutesUtil.fetchAll());
     }
 
     @DynamicPropertySource

@@ -5,6 +5,8 @@ import com.toob.service.shortest.entity.Route;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class RouteRepositoryTest extends AbstractRepositoryTest {
 
-    @Autowired
-    private RouteRepository routeRepository;
+    @BeforeAll
+    static void runDatabase() {
+        postgresContainer.start();
+    }
 
     @Test
     void shouldSaveRecord() {
@@ -43,7 +47,7 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     void shouldDeleteRoutesByPlanetOriginAndPlanetDestination() {
-        shouldSaveRecord();
+//        shouldSaveRecord();
         List<Route> foundRoutes = routeRepository.findByPlanetOriginAndPlanetDestination("A", "B");
         assertTrue(CollectionUtils.isNotEmpty( foundRoutes));
 
@@ -60,5 +64,10 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
 
         List<Route> routesShouldBeEmpty = routeRepository.findByPlanetOriginAndPlanetDestination("A", "B");
         assertTrue(CollectionUtils.isEmpty( routesShouldBeEmpty));
+    }
+
+    @AfterAll
+    static void stopDatabase() {
+        postgresContainer.stop();
     }
 }
