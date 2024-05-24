@@ -12,10 +12,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
 import uk.org.webcompere.systemstubs.jupiter.SystemStub;
 import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
@@ -23,6 +25,8 @@ import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Testcontainers
+@ActiveProfiles("test-containers")
 @ExtendWith(SystemStubsExtension.class)
 public abstract class AbstractRepositoryTest {
 
@@ -32,12 +36,6 @@ public abstract class AbstractRepositoryTest {
     @SystemStub
     protected static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
 
-    @Container
-    protected static final PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(TEST_DOCKER_CONTAINER_POSTGRES_IMAGE_NAME)
-            .withDatabaseName("integration-tests-db")
-            .withUsername("username")
-            .withPassword("password");
-
     @MockBean
     protected StartupProcesses startupProcesses;
 
@@ -46,9 +44,6 @@ public abstract class AbstractRepositoryTest {
 
     @MockBean
     protected SupportDataFileService supportDataFileService;
-
-    @MockBean
-    protected Flyway flyway;
 
     @Autowired
     protected PlanetRepository planetRepository;
@@ -60,13 +55,6 @@ public abstract class AbstractRepositoryTest {
     protected void setUp() {
         planetRepository.saveAll(MockedPlanetsUtil.fetchAll());
         routeRepository.saveAll(MockedRoutesUtil.fetchAll());
-    }
-
-    @DynamicPropertySource
-    static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {
-        dynamicPropertyRegistry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
-        dynamicPropertyRegistry.add("spring.datasource.username", postgresContainer::getUsername);
-        dynamicPropertyRegistry.add("spring.datasource.password", postgresContainer::getPassword);
     }
 
 }

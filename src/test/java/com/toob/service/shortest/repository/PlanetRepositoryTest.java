@@ -20,10 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class PlanetRepositoryTest extends AbstractRepositoryTest {
 
-    @BeforeAll
-    static void runDatabase() {
-        postgresContainer.start();
-    }
+//    @BeforeAll
+//    static void runDatabase() {
+//        postgresContainer.start();
+//    }
 
     @Test
     void shouldFindPlanets() {
@@ -31,9 +31,9 @@ class PlanetRepositoryTest extends AbstractRepositoryTest {
         assertNotNull( planets);
     }
 
-    @AfterAll
-    static void stopDatabase() {
-        postgresContainer.stop();
-    }
+//    @AfterAll
+//    static void stopDatabase() {
+//        postgresContainer.stop();
+//    }
 
 }

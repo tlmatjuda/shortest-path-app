@@ -22,10 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class RouteRepositoryTest extends AbstractRepositoryTest {
 
-    @BeforeAll
-    static void runDatabase() {
-        postgresContainer.start();
-    }
+//    @BeforeAll
+//    static void runDatabase() {
+//        postgresContainer.start();
+//    }
 
     @Test
     void shouldSaveRecord() {
@@ -47,7 +47,6 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     void shouldDeleteRoutesByPlanetOriginAndPlanetDestination() {
-//        shouldSaveRecord();
         List<Route> foundRoutes = routeRepository.findByPlanetOriginAndPlanetDestination("A", "B");
         assertTrue(CollectionUtils.isNotEmpty( foundRoutes));
 
@@ -66,8 +65,8 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
         assertTrue(CollectionUtils.isEmpty( routesShouldBeEmpty));
     }
 
-    @AfterAll
-    static void stopDatabase() {
-        postgresContainer.stop();
-    }
+//    @AfterAll
+//    static void stopDatabase() {
+//        postgresContainer.stop();
+//    }
 }
