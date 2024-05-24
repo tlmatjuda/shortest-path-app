@@ -3,7 +3,7 @@ package com.toob.service.shortest.service;
 import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.model.planet.PlanetModel;
-import com.toob.service.shortest.util.TestDataUtil;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
 import lombok.SneakyThrows;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,10 +32,10 @@ class PlanetQueryServiceTest extends AbstractServiceTest {
 
     @BeforeEach
     void setUp() {
-        earth = TestDataUtil.mockPlanet("A", "Earth");
-        moon = TestDataUtil.mockPlanet("B", "Moon");
-        jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        venus = TestDataUtil.mockPlanet("D", "Venus");
+        earth = MockedPlanetsUtil.fetchByNode("A");
+        moon = MockedPlanetsUtil.fetchByNode("B");
+        jupiter = MockedPlanetsUtil.fetchByNode("C");
+        venus = MockedPlanetsUtil.fetchByNode("D");;
     }
 
     @Test

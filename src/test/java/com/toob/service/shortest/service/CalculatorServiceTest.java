@@ -6,6 +6,8 @@ import com.toob.service.shortest.exception.ShortestPathCalculationException;
 import com.toob.service.shortest.model.ShortestPathResult;
 import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.repository.RouteRepository;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
+import com.toob.service.shortest.util.MockedRoutesUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.flywaydb.core.Flyway;
@@ -15,25 +17,25 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @Slf4j
 @SpringBootTest
-class CalculationServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
+class CalculatorServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
 
     @Autowired
-    private CalculationService calculationService;
+    private CalculatorService calculatorService;
 
-
-    @Test
-    void shouldInject() {
-        assertNotNull( calculationService);
-    }
 
     @Test
     void shouldCalculateShortestPath() {
+        when(planetRepository.findAll()).thenReturn(MockedPlanetsUtil.fetchAll());
+        when(routeRepository.findAll()).thenReturn(MockedRoutesUtil.fetchAll());
+        calculatorService.initialise();
+
         final String originKey = "A";
         final String destinationKey = "F";
-        ShortestPathResult calculationResponse = calculationService.run(originKey, destinationKey);
+        ShortestPathResult calculationResponse = calculatorService.run(originKey, destinationKey);
         assertNotNull( calculationResponse);
 
         String path = calculationResponse.getPath();
@@ -49,18 +51,17 @@ class CalculationServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
     @Test
     void shouldFailWhenArgumentIsMissing() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> calculationService.run(StringUtils.EMPTY, StringUtils.EMPTY));
+                () -> calculatorService.run(StringUtils.EMPTY, StringUtils.EMPTY));
         assertEquals(RoutesConstants.ERROR_REQUEST_BODY_NOT_FOUND, thrown.getMessage());
     }
 
     @Test
     void shouldFailWhenDestinationDoesNotExist() {
         Throwable thrown = assertThrows(ShortestPathCalculationException.class,
-                () -> calculationService.run("AZ", "ZA"));
+                () -> calculatorService.run("AZ", "ZA"));
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }
-
 
 
 

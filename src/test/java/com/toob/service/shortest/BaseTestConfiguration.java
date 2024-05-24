@@ -1,6 +1,6 @@
 package com.toob.service.shortest;
 
-import com.toob.service.shortest.service.CalculationService;
+import com.toob.service.shortest.service.CalculatorService;
 import com.toob.service.shortest.service.SupportDataFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ComponentScan(
         basePackageClasses = {Application.class},
         excludeFilters = @ComponentScan.Filter( type = FilterType.ASSIGNABLE_TYPE,
-                classes = {StartupProcesses.class, CalculationService.class, SupportDataFileService.class}))
+                classes = {StartupProcesses.class, CalculatorService.class, SupportDataFileService.class}))
 public class BaseTestConfiguration {
 
 

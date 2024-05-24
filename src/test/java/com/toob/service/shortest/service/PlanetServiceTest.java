@@ -1,12 +1,13 @@
 package com.toob.service.shortest.service;
 
 import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.toob.service.shortest.util.TestDataUtil;
 
 import java.util.Optional;
 
@@ -21,13 +22,18 @@ class PlanetServiceTest extends AbstractServiceTest {
     private PlanetService planetService;
 
     @Autowired
+    private PlanetMapper planetMapper;
+
+    @Autowired
     private PlanetQueryService planetQueryService;
 
 
     @Test
     void shouldSave() {
-        when( planetRepository.save( any(Planet.class))).thenReturn( TestDataUtil.mockPlanet("A", "Earth"));
-        PlanetModel planetModel = TestDataUtil.buildPlanet();
+        Planet earth = MockedPlanetsUtil.fetchByNode("A");
+        when( planetRepository.save( any(Planet.class))).thenReturn(earth);
+        PlanetModel planetModel = planetMapper.asModel(earth);
+
         PlanetModel save = planetService.save(planetModel);
         assertNotNull( save);
     }

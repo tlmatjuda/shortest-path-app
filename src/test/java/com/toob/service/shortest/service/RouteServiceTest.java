@@ -4,7 +4,8 @@ import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.model.route.RouteMinimalModel;
-import com.toob.service.shortest.util.TestDataUtil;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
+import com.toob.service.shortest.util.MockedRoutesUtil;
 import lombok.SneakyThrows;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
@@ -35,15 +36,10 @@ class RouteServiceTest extends AbstractServiceTest {
     @Test
     @SneakyThrows
     void shouldFetchAll() {
-        Planet earth = TestDataUtil.mockPlanet("A", "Earth");
-        Planet moon = TestDataUtil.mockPlanet("B", "Moon");
-        Planet jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        Planet venus = TestDataUtil.mockPlanet("D", "Venus");
-
         ArrayList<Route> mockedRoutes = Lists.newArrayList(
-                TestDataUtil.mockRoute(1, earth, moon, 0.44D),
-                TestDataUtil.mockRoute(2, earth, jupiter, 1.89D),
-                TestDataUtil.mockRoute(3, earth, venus, 0.10D)
+                MockedRoutesUtil.fetchById(1),
+                MockedRoutesUtil.fetchById(2),
+                MockedRoutesUtil.fetchById(3)
         );
 
         when( routeRepository.findAll()).thenReturn(mockedRoutes);
@@ -55,8 +51,8 @@ class RouteServiceTest extends AbstractServiceTest {
     @Test
     @SneakyThrows
     void shouldSave() {
-        Planet earth = TestDataUtil.mockPlanet("A", "Earth");
-        Planet jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
+        Planet earth = MockedPlanetsUtil.fetchByNode("A");
+        Planet jupiter = MockedPlanetsUtil.fetchByNode("C");
 
         when( planetRepository.findById( earth.getNode())).thenReturn( Optional.of( earth));
         when( planetRepository.findById( jupiter.getNode())).thenReturn( Optional.of( jupiter));
@@ -67,7 +63,7 @@ class RouteServiceTest extends AbstractServiceTest {
         routeMinimalModel.setDestination( jupiter.getNode());
         routeMinimalModel.setDistance(1.89D);
 
-        Route route = TestDataUtil.mockRoute(2, earth, jupiter, 1.89D);
+        Route route = MockedRoutesUtil.fetchById(2);
         when( routeRepository.save( any(Route.class))).thenReturn( route);
 
         RouteMinimalModel saved = routeService.save(routeMinimalModel);
@@ -77,9 +73,9 @@ class RouteServiceTest extends AbstractServiceTest {
     @Test
     @SneakyThrows
     void shouldFetchById() {
-        Planet earth = TestDataUtil.mockPlanet("A", "Earth");
-        Planet jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        Route earthToJupiter = TestDataUtil.mockRoute(2, earth, jupiter, 1.89D);
+//        Planet earth = MockedPlanetsUtil.fetchByNode("A");
+//        Planet jupiter = MockedPlanetsUtil.fetchByNode("C");
+        Route earthToJupiter = MockedRoutesUtil.fetchById(2);
         when( routeRepository.findById( earthToJupiter.getId())).thenReturn( Optional.of( earthToJupiter));
 
         RouteMinimalModel foundRoute = routeService.fetchById(2);
@@ -93,9 +89,9 @@ class RouteServiceTest extends AbstractServiceTest {
     @Test
     @SneakyThrows
     void shouldDeleteById() {
-        Planet earth = TestDataUtil.mockPlanet("A", "Earth");
-        Planet jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        Route earthToJupiter = TestDataUtil.mockRoute(2, earth, jupiter, 1.89D);
+//        Planet earth = MockedPlanetsUtil.fetchByNode("A");
+//        Planet jupiter = MockedPlanetsUtil.fetchByNode("C");
+        Route earthToJupiter = MockedRoutesUtil.fetchById(2);
         doNothing().when(routeRepository).deleteById( anyInt());
 
         routeService.deleteById( earthToJupiter.getId());
@@ -108,9 +104,9 @@ class RouteServiceTest extends AbstractServiceTest {
     @Test
     @SneakyThrows
     void shouldDeleteByPlanetRoutes() {
-        Planet earth = TestDataUtil.mockPlanet("A", "Earth");
-        Planet jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        Route earthToJupiter = TestDataUtil.mockRoute(2, earth, jupiter, 1.89D);
+        Planet earth = MockedPlanetsUtil.fetchByNode("A");
+        Planet jupiter = MockedPlanetsUtil.fetchByNode("A");
+        Route earthToJupiter = MockedRoutesUtil.fetchById(2);
 
         when( routeRepository.findByPlanetOriginAndPlanetDestination( anyString(), anyString()))
                 .thenReturn( Lists.newArrayList(earthToJupiter));

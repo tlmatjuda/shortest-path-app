@@ -2,25 +2,17 @@ package com.toob.service.shortest.rest;
 
 import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
-import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
-import com.toob.service.shortest.repository.PlanetRepository;
-import com.toob.service.shortest.rest.PlanetResource;
-import com.toob.service.shortest.service.PlanetQueryService;
-import com.toob.service.shortest.service.PlanetService;
-import com.toob.service.shortest.util.TestDataUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,14 +37,6 @@ class PlanetResourceTest extends AbstractResourceTest {
     static Planet moon;
     static Planet jupiter;
     static Planet venus;
-
-    @BeforeAll
-    static void beforeAll() {
-        earth = TestDataUtil.mockPlanet("A", "Earth");
-        moon = TestDataUtil.mockPlanet("B", "Moon");
-        jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        venus = TestDataUtil.mockPlanet("D", "Venus");
-    }
 
     @Test
     @SneakyThrows

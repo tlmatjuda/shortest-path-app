@@ -1,8 +1,6 @@
 package com.toob.service.shortest.service;
 
 import com.toob.service.shortest.StartupProcesses;
-import com.toob.service.shortest.entity.Planet;
-import com.toob.service.shortest.entity.Route;
 import com.toob.service.shortest.repository.PlanetRepository;
 import com.toob.service.shortest.repository.RouteRepository;
 import org.flywaydb.core.Flyway;
@@ -29,7 +27,7 @@ public abstract class AbstractServiceTest {
     protected StartupProcesses startupProcesses;
 
     @MockBean
-    protected CalculationService calculationService;
+    protected CalculatorService calculatorService;
 
     @MockBean
     protected SupportDataFileService supportDataFileService;

@@ -1,19 +1,16 @@
 package com.toob.service.shortest.service;
 
-import com.toob.service.shortest.StartupProcesses;
-import com.toob.service.shortest.repository.PlanetRepository;
-import com.toob.service.shortest.repository.RouteRepository;
-import org.flywaydb.core.Flyway;
+import com.toob.service.shortest.entity.Planet;
+import com.toob.service.shortest.entity.Route;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @EnableAutoConfiguration( exclude = {
         FlywayAutoConfiguration.class,
         DataSourceAutoConfiguration.class,
 })
-public abstract class AbstractNonDatabaseIntegrationServiceTest {
-
-
-}
+public abstract class AbstractNonDatabaseIntegrationServiceTest {}

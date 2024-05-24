@@ -1,6 +1,6 @@
 package com.toob.service.shortest;
 
-import com.toob.service.shortest.service.CalculationService;
+import com.toob.service.shortest.service.CalculatorService;
 import com.toob.service.shortest.service.SupportDataFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -18,16 +18,16 @@ public class StartupProcesses implements CommandLineRunner {
 
 
     private final SupportDataFileService supportDataFileService;
-    private final CalculationService calculationService;
+    private final CalculatorService calculatorService;
 
     /**
      * Constructor injection of required depenedencies
      * @param supportDataFileService :
-     * @param calculationService
+     * @param calculatorService
      */
-    public StartupProcesses(SupportDataFileService supportDataFileService, CalculationService calculationService) {
+    public StartupProcesses(SupportDataFileService supportDataFileService, CalculatorService calculatorService) {
         this.supportDataFileService = supportDataFileService;
-        this.calculationService = calculationService;
+        this.calculatorService = calculatorService;
     }
 
     /**
@@ -42,6 +42,6 @@ public class StartupProcesses implements CommandLineRunner {
        supportDataFileService.process();
 
         // Initialises the calculation information that we will need when using the logic in here.
-       calculationService.initialise();
+       calculatorService.initialise();
     }
 }

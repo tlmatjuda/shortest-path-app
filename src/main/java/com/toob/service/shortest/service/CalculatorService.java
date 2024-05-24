@@ -15,7 +15,6 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 @Slf4j
 @Service
-public class CalculationService {
+public class CalculatorService {
 
     private final PlanetRepository planetRepository;
     private final RouteRepository routeRepository;
@@ -41,7 +40,7 @@ public class CalculationService {
      * @param planetRepository
      * @param routeRepository
      */
-    public CalculationService(PlanetRepository planetRepository, RouteRepository routeRepository) {
+    public CalculatorService(PlanetRepository planetRepository, RouteRepository routeRepository) {
         this.planetRepository = planetRepository;
         this.routeRepository = routeRepository;
     }

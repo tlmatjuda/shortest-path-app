@@ -2,14 +2,11 @@ package com.toob.service.shortest.repository;
 
 import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
-import com.toob.service.shortest.service.CalculationService;
+import com.toob.service.shortest.service.CalculatorService;
 import com.toob.service.shortest.service.SupportDataFileService;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -41,7 +38,7 @@ public abstract class AbstractRepositoryTest {
     protected StartupProcesses startupProcesses;
 
     @MockBean
-    protected CalculationService calculationService;
+    protected CalculatorService calculatorService;
 
     @MockBean
     protected SupportDataFileService supportDataFileService;

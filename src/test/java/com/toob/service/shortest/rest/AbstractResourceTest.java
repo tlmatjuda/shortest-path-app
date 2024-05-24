@@ -4,12 +4,10 @@ import com.google.common.collect.Lists;
 import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.entity.Route;
-import com.toob.service.shortest.repository.PlanetRepository;
-import com.toob.service.shortest.repository.RouteRepository;
 import com.toob.service.shortest.service.*;
-import com.toob.service.shortest.util.TestDataUtil;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
+import com.toob.service.shortest.util.MockedRoutesUtil;
 import org.flywaydb.core.Flyway;
-import org.junit.jupiter.api.BeforeAll;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -36,7 +34,7 @@ public abstract class AbstractResourceTest {
     protected StartupProcesses startupProcesses;
 
     @MockBean
-    protected CalculationService calculationService;
+    protected CalculatorService calculatorService;
 
     @MockBean
     protected SupportDataFileService supportDataFileService;
@@ -57,19 +55,15 @@ public abstract class AbstractResourceTest {
 
 
     static  {
-        earth = TestDataUtil.mockPlanet("A", "Earth");
-        moon = TestDataUtil.mockPlanet("B", "Moon");
-        jupiter = TestDataUtil.mockPlanet("C", "Jupiter");
-        venus = TestDataUtil.mockPlanet("D", "Venus");
+        earth = MockedPlanetsUtil.fetchByNode("A");
+        moon = MockedPlanetsUtil.fetchByNode("B");
+        jupiter = MockedPlanetsUtil.fetchByNode("C");
+        venus = MockedPlanetsUtil.fetchByNode("D");
 
         mockedRoutes = Lists.newArrayList(
-                TestDataUtil.mockRoute(1, earth, moon, 0.44D),
-                TestDataUtil.mockRoute(2, earth, jupiter, 1.89D),
-                TestDataUtil.mockRoute(3, earth, venus, 0.10D)
+                MockedRoutesUtil.fetchById(1),
+                MockedRoutesUtil.fetchById(2),
+                MockedRoutesUtil.fetchById(3)
         );
     }
-
-
-
-
 }
