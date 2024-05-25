@@ -27,10 +27,10 @@ spring:
 
     # Database Configs
     datasource:
-        driverClassName: org.postgresql.Driver
-        password: ${POSTGRESS_DB_PASSWORD}
         url: jdbc:postgresql://${POSTGRESS_DB_HOST}:${POSTGRESS_DB_PORT}/${POSTGRESS_DB_NAME}
         username: ${POSTGRESS_DB_USERNAME}
+        password: ${POSTGRESS_DB_PASSWORD}
+        driverClassName: org.postgresql.Driver
 
     # Hibernate Configs
     jpa:

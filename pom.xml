@@ -35,6 +35,7 @@
 		<google.guava.version>33.2.0-jre</google.guava.version>
 	</properties>
 
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency><!-- Import dependency management from Spring Boot -->
