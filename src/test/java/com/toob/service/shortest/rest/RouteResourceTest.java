@@ -3,6 +3,7 @@ package com.toob.service.shortest.rest;
 
 import com.toob.service.shortest.mapper.RouteMapper;
 import com.toob.service.shortest.model.route.RouteMinimalModel;
+import com.toob.service.shortest.util.MockedRoutesUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ class RouteResourceTest extends AbstractResourceTest {
     @Test
     @SneakyThrows
     void shouldFetchAll() {
-        when(routeService.fetchAll()).thenReturn(routeMapper.asMinimalModel( mockedRoutes));
+        when(routeService.fetchAll()).thenReturn(routeMapper.asMinimalModel(MockedRoutesUtil.fetchAll()));
 
         ResponseEntity<Object> responseEntity = routeResource.fetchAll();
         assertNotNull( responseEntity);
@@ -39,7 +40,7 @@ class RouteResourceTest extends AbstractResourceTest {
     @Test
     @SneakyThrows
     void shouldSave() {
-        RouteMinimalModel earthToMoon = routeMapper.asMinimalModel(mockedRoutes.get(EARTH_TO_JUPITER));
+        RouteMinimalModel earthToMoon = routeMapper.asMinimalModel( MockedRoutesUtil.fetchById(2));
         when(routeService.save( any(RouteMinimalModel.class))).thenReturn(earthToMoon);
 
         ResponseEntity<Object> responseEntity = routeResource.save( new RouteMinimalModel());
@@ -52,7 +53,7 @@ class RouteResourceTest extends AbstractResourceTest {
     @Test
     @SneakyThrows
     void shouldUpdate() {
-        RouteMinimalModel earthToVenus = routeMapper.asMinimalModel(mockedRoutes.get(EARTH_TO_VENUS));
+        RouteMinimalModel earthToVenus = routeMapper.asMinimalModel(MockedRoutesUtil.fetchById(2));
         when(routeService.fetchById( anyInt())).thenReturn(earthToVenus);
         when(routeService.save( any(RouteMinimalModel.class))).thenReturn(earthToVenus);
 
@@ -67,7 +68,7 @@ class RouteResourceTest extends AbstractResourceTest {
     @Test
     @SneakyThrows
     void shouldDeleteById() {
-        RouteMinimalModel earthToVenus = routeMapper.asMinimalModel(mockedRoutes.get(EARTH_TO_VENUS));
+        RouteMinimalModel earthToVenus = routeMapper.asMinimalModel(MockedRoutesUtil.fetchById(2));
         doNothing().when(routeService).deleteById( anyInt());
 
         ResponseEntity<Object> responseEntity = routeResource.deleteById(earthToVenus.getId());

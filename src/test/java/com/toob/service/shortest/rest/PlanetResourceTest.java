@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.mapper.PlanetMapper;
 import com.toob.service.shortest.model.planet.PlanetModel;
+import com.toob.service.shortest.util.MockedPlanetsUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -31,12 +32,14 @@ class PlanetResourceTest extends AbstractResourceTest {
     @Autowired
     private PlanetMapper planetMapper;
 
-    private static MockHttpServletRequest request;
 
-    static Planet earth;
-    static Planet moon;
-    static Planet jupiter;
-    static Planet venus;
+    @BeforeAll
+    static void beforeAll() {
+        earth = MockedPlanetsUtil.fetchByNode("A");
+        moon = MockedPlanetsUtil.fetchByNode("B");
+        jupiter = MockedPlanetsUtil.fetchByNode("C");
+        venus = MockedPlanetsUtil.fetchByNode("D");
+    }
 
     @Test
     @SneakyThrows

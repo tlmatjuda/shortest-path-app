@@ -53,17 +53,4 @@ public abstract class AbstractResourceTest {
     final static Integer EARTH_TO_JUPITER = 1;
     final static Integer EARTH_TO_VENUS = 2;
 
-
-    static  {
-        earth = MockedPlanetsUtil.fetchByNode("A");
-        moon = MockedPlanetsUtil.fetchByNode("B");
-        jupiter = MockedPlanetsUtil.fetchByNode("C");
-        venus = MockedPlanetsUtil.fetchByNode("D");
-
-        mockedRoutes = Lists.newArrayList(
-                MockedRoutesUtil.fetchById(1),
-                MockedRoutesUtil.fetchById(2),
-                MockedRoutesUtil.fetchById(3)
-        );
-    }
 }

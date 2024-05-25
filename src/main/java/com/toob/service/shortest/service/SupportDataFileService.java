@@ -75,16 +75,6 @@ public class SupportDataFileService {
     }
 
     /**
-     * Leverages of the PLANETS & ROUTES lists and inserts them into the database.
-     */
-    private void loadDatabaseWithData() {
-        log.info("Saving the data from file : {} to the database", supportExcelFileResource.getFilename());
-        planetRepository.saveAll(getPlanetList());
-        routeRepository.saveAll(getRouteList());
-        log.info("Content now saved to the database!");
-    }
-
-    /**
      * Stream through the PLANETS list and extract one by the given Node.
      *
      * @param planetNodeArg

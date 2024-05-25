@@ -13,12 +13,5 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @TestConfiguration
-@ComponentScan(
-        basePackageClasses = {Application.class},
-        excludeFilters = @ComponentScan.Filter( type = FilterType.ASSIGNABLE_TYPE,
-                classes = {StartupProcesses.class, CalculatorService.class, SupportDataFileService.class}))
-public class BaseTestConfiguration {
-
-
-
-}
+@ComponentScan(basePackageClasses = {Application.class})
+public class BaseTestConfiguration {}
