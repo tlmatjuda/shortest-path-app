@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,10 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.atLeastOnce;
 
-@SpringBootTest
 class RouteServiceTest extends AbstractServiceTest {
+
+    @MockBean
+    protected SupportDataFileService supportDataFileService;
 
     @Autowired
     private RouteService routeService;

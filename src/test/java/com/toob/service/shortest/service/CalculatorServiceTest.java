@@ -20,8 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @Slf4j
-@SpringBootTest
-class CalculatorServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
+class CalculatorServiceTest extends AbstractServiceTest {
+
+    @MockBean
+    protected SupportDataFileService supportDataFileService;
 
     @Autowired
     private CalculatorService calculatorService;
@@ -62,25 +64,5 @@ class CalculatorServiceTest extends AbstractNonDatabaseIntegrationServiceTest {
 
         assertEquals(RoutesConstants.ERROR_DESTINATION_NOT_FOUND, thrown.getMessage());
     }
-
-
-
-    /**
-     * Mocking Beans we don't want
-     */
-    @MockBean
-    private PlanetRepository planetRepository;
-
-    @MockBean
-    private RouteRepository routeRepository;
-
-    @MockBean
-    private StartupProcesses startupProcesses;
-
-    @MockBean
-    private SupportDataFileService supportDataFileService;
-
-    @MockBean
-    private Flyway flyway;
 
 }

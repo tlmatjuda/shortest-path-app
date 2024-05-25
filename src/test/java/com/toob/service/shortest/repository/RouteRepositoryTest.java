@@ -19,13 +19,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
-@SpringBootTest
 class RouteRepositoryTest extends AbstractRepositoryTest {
-
-//    @BeforeAll
-//    static void runDatabase() {
-//        postgresContainer.start();
-//    }
 
     @Test
     void shouldSaveRecord() {
@@ -64,9 +58,4 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
         List<Route> routesShouldBeEmpty = routeRepository.findByPlanetOriginAndPlanetDestination("A", "B");
         assertTrue(CollectionUtils.isEmpty( routesShouldBeEmpty));
     }
-
-//    @AfterAll
-//    static void stopDatabase() {
-//        postgresContainer.stop();
-//    }
 }

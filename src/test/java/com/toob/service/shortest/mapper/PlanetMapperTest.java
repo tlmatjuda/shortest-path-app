@@ -10,6 +10,7 @@ import com.toob.service.shortest.repository.RouteRepository;
 import com.toob.service.shortest.service.SupportDataFileService;
 import com.toob.service.shortest.util.MockedPlanetsUtil;
 import org.apache.commons.collections4.CollectionUtils;
+import org.aspectj.asm.AsmManager;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,30 +28,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@SpringBootTest
-@EnableAutoConfiguration( exclude = {
-        FlywayAutoConfiguration.class,
-        DataSourceAutoConfiguration.class,
-})
-class PlanetMapperTest {
 
-    /**
-     * Mocking Beans we don't want
-     */
-    @MockBean
-    private PlanetRepository planetRepository;
-
-    @MockBean
-    private RouteRepository routeRepository;
-
-    @MockBean
-    private StartupProcesses startupProcesses;
-
-    @MockBean
-    private SupportDataFileService supportDataFileService;
-
-    @MockBean
-    private Flyway flyway;
+class PlanetMapperTest extends AbstractMapperTest {
 
     @Autowired
     private PlanetMapper planetMapper;

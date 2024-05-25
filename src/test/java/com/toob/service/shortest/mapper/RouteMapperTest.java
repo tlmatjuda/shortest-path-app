@@ -26,30 +26,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@EnableAutoConfiguration( exclude = {
-        FlywayAutoConfiguration.class,
-        DataSourceAutoConfiguration.class,
-})
-class RouteMapperTest {
 
-    /**
-     * Mocking Beans we don't want
-     */
-    @MockBean
-    private PlanetRepository planetRepository;
-
-    @MockBean
-    private RouteRepository routeRepository;
-
-    @MockBean
-    private StartupProcesses startupProcesses;
-
-    @MockBean
-    private SupportDataFileService supportDataFileService;
-
-    @MockBean
-    private Flyway flyway;
+class RouteMapperTest extends AbstractMapperTest {
 
     @Autowired
     private RouteMapper routeMapper;

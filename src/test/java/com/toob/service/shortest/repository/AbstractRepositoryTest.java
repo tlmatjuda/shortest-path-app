@@ -1,5 +1,6 @@
 package com.toob.service.shortest.repository;
 
+import com.toob.service.shortest.AbstractSpringIntegrationTest;
 import com.toob.service.shortest.StartupProcesses;
 import com.toob.service.shortest.entity.Planet;
 import com.toob.service.shortest.service.CalculatorService;
@@ -27,17 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
 @ActiveProfiles("test-containers")
-@ExtendWith(SystemStubsExtension.class)
-public abstract class AbstractRepositoryTest {
-
-    public static final String ENV_VAR_TESTCONTAINERS_RYUK_DISABLED = "TESTCONTAINERS_RYUK_DISABLED";
-    public static final String TEST_DOCKER_CONTAINER_POSTGRES_IMAGE_NAME = "postgres:16-alpine3.19";
-
-    @SystemStub
-    protected static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
-
-    @MockBean
-    protected StartupProcesses startupProcesses;
+public abstract class AbstractRepositoryTest extends AbstractSpringIntegrationTest {
 
     @MockBean
     protected CalculatorService calculatorService;

@@ -17,23 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @Slf4j
-@SpringBootTest
 class PlanetRepositoryTest extends AbstractRepositoryTest {
-
-//    @BeforeAll
-//    static void runDatabase() {
-//        postgresContainer.start();
-//    }
 
     @Test
     void shouldFindPlanets() {
         List<Planet> planets = planetRepository.findAll();
         assertNotNull( planets);
     }
-
-//    @AfterAll
-//    static void stopDatabase() {
-//        postgresContainer.stop();
-//    }
 
 }

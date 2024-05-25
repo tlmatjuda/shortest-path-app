@@ -1,6 +1,5 @@
-package com.toob.service.shortest.util;
+package com.toob.service.shortest;
 
-import com.toob.service.shortest.StartupProcesses;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
@@ -15,7 +14,5 @@ public abstract class AbstractTest {
     @SystemStub
     protected static EnvironmentVariables ENV_VARS = new EnvironmentVariables(ENV_VAR_TESTCONTAINERS_RYUK_DISABLED, Boolean.TRUE.toString());
 
-    @MockBean
-    protected StartupProcesses startupProcesses;
 
 }
