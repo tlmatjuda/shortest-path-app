@@ -1,12 +1,14 @@
 # Interstellar Travel System Service
 
-The above graph represents an interstellar transport system used by Earth’s inhabitants in the year 2145.
+The graph below represents an interstellar transport system used by Earth’s inhabitants in the year 2145.
 
-They require you to build a system that will allow them to find the shortest path from point “A”, being Earth, through the galaxy to any of the planets represented by the other nodes.
+The requirement is to build a system that will allow them to find the shortest path from point “A”, being Earth, through the galaxy to any of the planets represented by the other nodes.
 
 You are provided with a list of node names and their respective distances between their linked planets and things.
 
 In addition, you need to ensure that the system will work from any source to destination coordinates specified.
+
+My plan is to showcase my skills of a Spring Boot Java Microsevice that is stipulated in **"Tech Stack"** stack section.
 
 </br>
 
@@ -16,13 +18,15 @@ In addition, you need to ensure that the system will work from any source to des
 
 ## Tech Stack
 
+**NB :** My main plan is to showcase my skills in the tech stack below.
+
 The technology stack used in the project is :
 
 * **Java** (JDK 17.x )
 * Maven 3.8.7
-* Spring Boot 2.7.17 (with Spring 5.3.30)
-* JPA Specification 2.2.3 (supported by the Hibernate Implementation 5.6.15)
-* Apache Derby Database ( In-Memory )
+* Spring Boot 3.2.5 (with Spring 6.1.6)
+* Jakarta Persistence API Specification 2.2.3 (supported by the Hibernate Implementation 5.6.15)
+* Postgress database 16
 * Project Lombok
 * MapStruct ( for Model / DTO mapping )
 * REST Web Service ( with Spring MVC, JSON, Swagger UI)
