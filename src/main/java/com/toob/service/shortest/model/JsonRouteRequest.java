@@ -13,6 +13,4 @@ public class JsonRouteRequest {
     protected String origin;
     protected String destination;
 
-
-
 }
