@@ -1,0 +1,41 @@
+
+# ======================================================================================================================
+# CUSTOM CONFIGS
+# ======================================================================================================================
+spp:
+    app:
+        conf:
+            file:
+                support-data: classpath:/data/support-data.xlsx
+#                soap-schema: classpath:/contract/shortest-path-domain.xsd
+
+
+
+# ======================================================================================================================
+# SPRING CONFIGS
+# ======================================================================================================================
+server:
+    port: 8003
+    servlet:
+        # Let's customise the app's context path.
+        context-path: /interstellar
+
+spring:
+    autoconfigure:
+        # Let's switch of the Error White Label, so that we can have fun with Swagger, I mean why not?
+        exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+
+    # Database Configs
+    datasource:
+        driverClassName: org.postgresql.Driver
+        password: ${POSTGRESS_DB_PASSWORD}
+        url: jdbc:postgresql://${POSTGRESS_DB_HOST}:${POSTGRESS_DB_PORT}/${POSTGRESS_DB_NAME}
+        username: ${POSTGRESS_DB_USERNAME}
+
+    # Hibernate Configs
+    jpa:
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
