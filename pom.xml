@@ -18,6 +18,21 @@
 		<maven.compiler.target>17</maven.compiler.target>
 
 		<spring-boot.version>3.2.5</spring-boot.version>
+		<spring-boot.swagger.version>3.0.0</spring-boot.swagger.version>
+		<jakarta-validation-api.swagger.version>3.1.0-M1</jakarta-validation-api.swagger.version>
+
+		<test-containers.version>1.19.8</test-containers.version>
+		<jupiter-system-stubs.version>2.1.6</jupiter-system-stubs.version>
+
+		<postgres-db-driver.version>42.7.3</postgres-db-driver.version>
+
+		<mapstruct.version>1.6.0.Beta1</mapstruct.version>
+		<apache.comons.lang.version>3.13.0</apache.comons.lang.version>
+		<apache.comons.collections.version>4.4</apache.comons.collections.version>
+		<apache.comons.text.version>1.11.0</apache.comons.text.version>
+		<apache.comons.poi.version>5.2.5</apache.comons.poi.version>
+		<jgrapht.version>1.5.2</jgrapht.version>
+		<google.guava.version>33.2.0-jre</google.guava.version>
 	</properties>
 
 	<dependencyManagement>
@@ -42,12 +57,12 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+			<version>${spring-boot.swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>3.0.0</version>
+			<version>${spring-boot.swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,7 +75,7 @@
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.1.0-M1</version>
+			<version>${jakarta-validation-api.swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -83,19 +98,19 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>1.19.8</version>
+			<version>${test-containers.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>1.19.8</version>
+			<version>${test-containers.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>uk.org.webcompere</groupId>
 			<artifactId>system-stubs-jupiter</artifactId>
-			<version>2.1.6</version>
+			<version>${jupiter-system-stubs.version}</version>
 		</dependency>
 
 
@@ -107,7 +122,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.7.3</version>
+			<version>${postgres-db-driver.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
@@ -116,7 +131,7 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.6.0.Beta1</version>
+			<version>${mapstruct.version}</version>
 		</dependency>
 
 
@@ -124,22 +139,22 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.13.0</version>
+			<version>${apache.comons.lang.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
-			<version>4.4</version>
+			<version>${apache.comons.collections.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-text</artifactId>
-			<version>1.11.0</version>
+			<version>${apache.comons.text.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>5.2.5</version>
+			<version>${apache.comons.poi.version}</version>
 		</dependency>
 
 		<!-- OTHER TOOLS SECTION  -->
@@ -151,13 +166,12 @@
 		<dependency>
 			<groupId>org.jgrapht</groupId>
 			<artifactId>jgrapht-core</artifactId>
-			<version>1.5.2</version>
+			<version>${jgrapht.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>33.2.0-jre</version>
+			<version>${google.guava.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -169,8 +183,16 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
+						<!-- Specifies the builder used to create the image. -->
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+
+						<!-- Specify the image name and tag -->
+						<imageName>${project.artifactId}</imageName>
+						<imageTag>latest</imageTag>
 					</image>
+					<layers>
+						<enabled>true</enabled>
+					</layers>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

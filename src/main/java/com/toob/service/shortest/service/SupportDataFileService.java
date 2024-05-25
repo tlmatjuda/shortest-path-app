@@ -32,7 +32,7 @@ import java.util.function.Predicate;
 public class SupportDataFileService {
 
 
-    @Value("${spp.app.conf.file.suppport-data}")
+    @Value("${spp.app.conf.file.support-data}")
     private Resource supportExcelFileResource;
 
     @Getter
