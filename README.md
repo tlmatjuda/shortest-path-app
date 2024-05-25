@@ -26,8 +26,9 @@ My plan is to showcase my skills of a Spring Boot Java Microsevice that is stipu
 
 The technology stack used in the project is :
 
-* **Java** (JDK 17.x )
+* Java (JDK 17.x )
 * Maven 3.8.7
+* Docker ( either Docker or Rancher )
 * Spring Boot 3.2.5 (with Spring 6.1.6)
 * Jakarta Persistence API Specification 2.2.3 (supported by the Hibernate Implementation 5.6.15)
 * Postgress database 16
@@ -47,7 +48,9 @@ The technology stack used in the project is :
 
 Given the technology stack mantioned above you will mainly need Java 17 installed on your machine.
 
-You can use the maven included in the repo with via the supllied scipts for both Windows OS (`mvnw.cmd`) and Unix OS (`mvnw`)based machines.
+You can use the maven included in the repo with via the supllied scipts for both Windows OS (`mvnw.cmd`) and Unix OS (`mvnw`) based machines.
+
+Make sure that you have **Docker Desktop** or **Rancher Desktop**
 
 1. To build the project change to the root directory and use the command `./mvnw clean install` to build
 2. When the build is done you can run the service using `./mvnw spring-boot:run`
