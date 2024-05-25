@@ -65,7 +65,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Space\"\n}"
+									"raw": "{\n    \"node\": \"TLM\",\n    \"name\": \"Thabo Space\"\n}"
 								},
 								"url": {
 									"raw": "http://localhost:8003/interstellar/rest/planets",
@@ -99,7 +99,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Spaces Galore\"\n}"
+									"raw": "{\n    \"node\": \"TLM\",\n    \"name\": \"Thabo Spaces Galore\"\n}"
 								},
 								"url": {
 									"raw": "http://localhost:8003/interstellar/rest/planets/TLM",
@@ -211,7 +211,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"routeId\": 120,\n    \"distanceInLightYears\": 0.44,\n    \"planetOrigin\": \"D\",\n    \"planetDestination\": \"L\"\n}"
+									"raw": "{\n    \"id\": 43,\n    \"distance\": 40.48,\n    \"origin\": \"G'\",\n    \"destination\": \"H'\"\n}"
 								},
 								"url": {
 									"raw": "http://localhost:8003/interstellar/rest/routes",
@@ -245,10 +245,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"routeId\": 120,\n    \"distanceInLightYears\": 0.44,\n    \"planetOrigin\": \"T\",\n    \"planetDestination\": \"L\"\n}"
+									"raw": "{\n    \"id\": 45,\n    \"distance\": 0.45,\n    \"origin\": \"B\",\n    \"destination\": \"E\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/interstellar/rest/routes/120",
+									"raw": "http://localhost:8003/interstellar/rest/routes/45",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -258,7 +258,7 @@
 										"interstellar",
 										"rest",
 										"routes",
-										"120"
+										"45"
 									]
 								}
 							},
@@ -283,7 +283,7 @@
 									"raw": "{\n    \"planetNode\": \"TLM\",\n    \"planetName\": \"Thabo Space\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8003/interstellar/rest/routes/120",
+									"raw": "http://localhost:8003/interstellar/rest/routes/43",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -293,7 +293,46 @@
 										"interstellar",
 										"rest",
 										"routes",
-										"120"
+										"43"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Calculation",
+					"item": [
+						{
+							"name": "Calulate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{sf.auth.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"origin\": \"A\",\n    \"destination\": \"F\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8003/interstellar/rest/calculation",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8003",
+									"path": [
+										"interstellar",
+										"rest",
+										"calculation"
 									]
 								}
 							},
@@ -308,8 +347,11 @@
 			"item": [
 				{
 					"name": "Calculate Shortest Path",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -319,10 +361,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:gen=\"http://gen.soap.thabomatjuda.assignment.discovery.co.za\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <gen:RouteRequest>\n         <gen:origin>A</gen:origin>\n         <gen:destination>F</gen:destination>\n      </gen:RouteRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
+							"raw": "{\n  \"code\": \"GQ574\",\n  \"price\": 399,\n  \"departureDate\": \"2016/12/20\",\n  \"origin\": \"ORD\",\n  \"destination\": \"SFO\",\n  \"emptySeats\": 200,\n  \"plane\": {\"type\": \"Boeing 747\", \"totalSeats\": 400}\n}",
 							"options": {
 								"raw": {
-									"language": "xml"
+									"language": "json"
 								}
 							}
 						},

@@ -56,13 +56,13 @@ public class PlanetResource {
 
     /**
      *
-     * @param planetNode : Takes in this parameter as an ID for the entry.
+     * @param node : Takes in this parameter as an ID for the entry.
      * @param planetModel : Accepts this Planet structure as a Body.
      * @return
      */
-    @PutMapping("/{planetNode}")
-    public ResponseEntity<Object> update(@PathVariable String planetNode, @RequestBody PlanetModel planetModel) {
-        PlanetModel existingPlanet = planetQueryService.fetchById(planetNode);
+    @PutMapping("/{node}")
+    public ResponseEntity<Object> update(@PathVariable("node") String node, @RequestBody PlanetModel planetModel) {
+        PlanetModel existingPlanet = planetQueryService.fetchById(node);
         if (Objects.nonNull( existingPlanet)){
             planetService.save(planetModel);
         }
@@ -71,12 +71,12 @@ public class PlanetResource {
 
     /**
      * DELETES to REMOVES a Planet Entry by Id.
-     * @param planetNode : The given Id to remove.
+     * @param node : The given Id to remove.
      * @return
      */
-    @DeleteMapping("/{planetNode}")
-    public ResponseEntity<Object> deleteById(@PathVariable String planetNode) {
-        planetService.deleteById(planetNode);
+    @DeleteMapping("/{node}")
+    public ResponseEntity<Object> deleteById(@PathVariable("node") String node) {
+        planetService.deleteById(node);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

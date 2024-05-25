@@ -59,7 +59,7 @@ public class RouteResource {
      * @return
      */
     @PutMapping("/{routeId}")
-    public ResponseEntity<Object> update(@PathVariable Integer routeId, @RequestBody RouteMinimalModel routeMinimalModel) {
+    public ResponseEntity<Object> update(@PathVariable("routeId") Integer routeId, @RequestBody RouteMinimalModel routeMinimalModel) {
         RouteMinimalModel routeModel = routeService.fetchById(routeId);
         if (Objects.nonNull( routeModel)) {
             routeService.save(routeMinimalModel);
@@ -77,7 +77,7 @@ public class RouteResource {
      * @return
      */
     @DeleteMapping("/{routeId}")
-    public ResponseEntity<Object> deleteById(@PathVariable Integer routeId) {
+    public ResponseEntity<Object> deleteById(@PathVariable("routeId") Integer routeId) {
         routeService.deleteById(routeId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
