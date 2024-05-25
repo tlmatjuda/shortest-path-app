@@ -1,6 +1,10 @@
 # Interstellar Travel System Service
 
-The graph below represents an interstellar transport system used by Earth’s inhabitants in the year 2145.
+Welcome, this is a showcase of my Java / Spring Boot skills together with the tools and frameworks that are in the **"Tech Stack"** section.
+
+
+
+So the story is that the graph below represents an interstellar transport system used by Earth’s inhabitants in the year 2145.
 
 The requirement is to build a system that will allow them to find the shortest path from point “A”, being Earth, through the galaxy to any of the planets represented by the other nodes.
 
