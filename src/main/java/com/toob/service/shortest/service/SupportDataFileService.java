@@ -11,17 +11,15 @@ import com.toob.service.shortest.repository.RouteRepository;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 /**
  * Business logic responsible for the Startup process that imports data from the supplied Excel File to the In-Memory Database.
@@ -31,9 +29,12 @@ import java.util.function.Predicate;
 @Service
 public class SupportDataFileService {
 
+    public static final String SPP_APP_CONF_FILE_SUPPORT_DATA = "spp.app.conf.file.support-data";
 
-    @Value("${spp.app.conf.file.support-data}")
-    private Resource supportExcelFileResource;
+
+    private final Environment environment;
+    private String supportExcelFileResource;
+
 
     @Getter
     private List<Planet> planetList = new ArrayList<>();
@@ -41,14 +42,18 @@ public class SupportDataFileService {
     @Getter
     private List<Route> routeList = new ArrayList<>();
 
+
     private final PlanetRepository planetRepository;
     private final RouteRepository routeRepository;
     private final DataFormatter dataFormatter = new DataFormatter();
 
 
-    public SupportDataFileService(PlanetRepository planetRepository, RouteRepository routeRepository) {
+    public SupportDataFileService(PlanetRepository planetRepository, RouteRepository routeRepository, Environment environment) {
         this.planetRepository = planetRepository;
         this.routeRepository = routeRepository;
+        this.environment = environment;
+        String errorMessage = String.format("%s configurations is required", SPP_APP_CONF_FILE_SUPPORT_DATA);
+        this.supportExcelFileResource = Objects.requireNonNull( this.environment.getProperty(SPP_APP_CONF_FILE_SUPPORT_DATA), errorMessage);
     }
 
 
@@ -58,9 +63,10 @@ public class SupportDataFileService {
      */
     public void process() throws Exception {
         // Read the file into apache's POI's Workbook
-        Workbook workbook = WorkbookFactory.create(supportExcelFileResource.getFile());
+        ClassPathResource excelFIleResource = new ClassPathResource(supportExcelFileResource);
+        Workbook workbook = WorkbookFactory.create(excelFIleResource.getInputStream());
         log.info("Reading Excel File : {} which has {} sheets in total",
-                supportExcelFileResource.getFilename(), workbook.getNumberOfSheets());
+                excelFIleResource.getFilename(), workbook.getNumberOfSheets());
 
         List<Planet> planets = planetRepository.findAll();
         if (CollectionUtils.isEmpty( planets)) {
