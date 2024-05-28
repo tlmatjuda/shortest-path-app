@@ -7,7 +7,7 @@ spp:
     app:
         conf:
             file:
-                support-data: classpath:/data/support-data.xlsx
+                support-data: data/support-data.xlsx
 
 
 

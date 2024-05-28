@@ -6,8 +6,7 @@ spp:
     app:
         conf:
             file:
-                support-data: classpath:/data/support-data.xlsx
-#                soap-schema: classpath:/contract/shortest-path-domain.xsd
+                support-data: data/support-data.xlsx
 
 
 
