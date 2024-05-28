@@ -33,6 +33,9 @@
 		<apache.comons.poi.version>5.2.5</apache.comons.poi.version>
 		<jgrapht.version>1.5.2</jgrapht.version>
 		<google.guava.version>33.2.0-jre</google.guava.version>
+
+		<docker.hub.io.prefix>docker.io/library</docker.hub.io.prefix>
+		<local.docker.registry.prefix>localhost:5001</local.docker.registry.prefix>
 	</properties>
 
 
@@ -188,8 +191,7 @@
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
 
 						<!-- Specify the image name and tag -->
-						<imageName>${project.artifactId}</imageName>
-						<imageTag>latest</imageTag>
+						<name>${local.docker.registry.prefix}/${project.artifactId}:latest</name>
 					</image>
 					<layers>
 						<enabled>true</enabled>

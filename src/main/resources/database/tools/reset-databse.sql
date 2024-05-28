@@ -1,6 +1,2 @@
-\CONNECT TO shortest_vertex;
-
-
-DROP TABLE "Routes";
-DROP TABLE "Planets";
-DROP TABLE flyway_schema_history;
+CREATE DATABASE shortest_path;
+CREATE SCHEMA app;

@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  java-spring-boot-application:
+    container_name: shortest-path-app
+    image: localhost:5001/shortest-path-app:latest
+    ports:
+      - 8003:8003
+    restart: unless-stopped
+    environment:
+      # To clear the manifest using the HTTP API you need to set REGISTRY_STORAGE_DELETE_ENABLED = true
+      # in your docker-compose file and make sure that you are using a registry V2.
+      POSTGRESS_DB_USERNAME: "${POSTGRESS_DB_USERNAME}"
+      POSTGRESS_DB_PASSWORD: "${POSTGRESS_DB_PASSWORD}"
+      POSTGRESS_DB_HOST: postgres-db
+      POSTGRESS_DB_PORT: "${POSTGRESS_DB_PORT}"
+      POSTGRESS_DB_NAME: "${POSTGRESS_DB_NAME}"
+
+    networks:
+      - shortest-path-app-network
+
+# Get it to connect to
+networks:
+  shortest-path-app-network:
+    name: postgres-database-network
+    external: true
