@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: toob-space
+  name: shortest-path-app-config
+data:
+  application.json: |
+    {
+      "spp": {
+        "app": {
+          "conf": {
+            "file": {
+              "support-data": "data/support-data.xlsx"
+            }
+          }
+        },
+        "server": {
+          "port": 8003,
+          "servlet": {
+            "context-path": "/interstellar"
+          }
+        },
+        "spring": {
+          "autoconfigure": {
+            "exclude": "org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration"
+          },
+          "datasource": {
+            "url": "jdbc:postgresql://192.168.3.3:5432/shortest_path",
+            "username": "${DATABASE_USERNAME}",
+            "password": "${DATABASE_PASSWORD}",
+            "driverClassName": "org.postgresql.Driver"
+          },
+          "jpa": {
+            "hibernate": {
+              "ddl-auto": "none"
+            },
+            "properties": {
+              "hibernate": {
+                "dialect": "org.hibernate.dialect.PostgreSQLDialect"
+              }
+            }
+          }
+        }
+      }
+    }

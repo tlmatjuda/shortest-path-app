@@ -13,7 +13,7 @@ services:
       DATABASE_USERNAME: "${POSTGRESS_DB_USERNAME}"
       DATABASE_PASSWORD: "${POSTGRESS_DB_PASSWORD}"
       DATABASE_HOST: postgres-db
-      DATABASE_PORT: "${POSTGRESS_DB_PORT}"
+      DATABASE_PORT: 5432
 
     networks:
       - shortest-path-app-network

@@ -8,8 +8,6 @@ spp:
             file:
                 support-data: data/support-data.xlsx
 
-
-
 # ======================================================================================================================
 # SPRING CONFIGS
 # ======================================================================================================================
@@ -26,7 +24,7 @@ spring:
 
     # Database Configs
     datasource:
-        url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/shortest_path
+        url: jdbc:postgresql://localhost:5432/shortest_path
         username: ${DATABASE_USERNAME}
         password: ${DATABASE_PASSWORD}
         driverClassName: org.postgresql.Driver
