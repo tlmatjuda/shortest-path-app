@@ -11,6 +11,7 @@ import com.toob.service.shortest.service.CalculatorService;
 import com.toob.service.shortest.util.MockedPlanetsUtil;
 import com.toob.service.shortest.util.MockedRoutesUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ class ShortestPathHandlerTest extends AbstractSpringIntegrationTest {
 
     @Autowired
     private ShortestPathHandler shortestPathHandler;
+
+    @MockBean
+    protected Flyway flyway;
 
     @BeforeEach
     void setUp() {

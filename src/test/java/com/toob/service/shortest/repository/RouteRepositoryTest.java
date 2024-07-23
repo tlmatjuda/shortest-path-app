@@ -11,7 +11,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.transaction.annotation.Transactional;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +23,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 class RouteRepositoryTest extends AbstractRepositoryTest {
+
+    @Container
+    @ServiceConnection
+    static PostgreSQLContainer<?> postgres =
+            new PostgreSQLContainer<>(IMAGE_NAME_POSTGRES_16_ALPINE_3_19);
 
     @Test
     void shouldSaveRecord() {

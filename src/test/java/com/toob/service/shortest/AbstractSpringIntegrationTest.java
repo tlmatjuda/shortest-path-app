@@ -3,6 +3,7 @@ package com.toob.service.shortest;
 import com.toob.service.shortest.service.CalculatorService;
 import com.toob.service.shortest.service.SupportDataFileService;
 import lombok.extern.slf4j.Slf4j;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
