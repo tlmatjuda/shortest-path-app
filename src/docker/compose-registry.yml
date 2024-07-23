@@ -7,5 +7,5 @@ services:
     restart: unless-stopped
     environment:
       # To clear the manifest using the HTTP API you need to set REGISTRY_STORAGE_DELETE_ENABLED = true
-      # in your docker-compose file and make sure that you are using a registry V2.
+      # in your postgres-compose file and make sure that you are using a registry V2.
       REGISTRY_STORAGE_DELETE_ENABLED: "true"
