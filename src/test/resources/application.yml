@@ -15,10 +15,11 @@ spp:
 # SPRING CONFIGS
 # ======================================================================================================================
 spring:
-    datasource:
-        url: jdbc:tc:postgresql:16-alpine3.19:///test_database
-        username: user
-        password: password
+#    datasource:
+#        url: jdbc:tc:postgresql:16-alpine3.19:///test_database
+#        username: user
+#        password: password
+#        driverClassName: org.postgresql.Driver
     flyway:
         enabled: false
     jpa:

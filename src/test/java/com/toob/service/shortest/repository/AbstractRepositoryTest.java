@@ -36,6 +36,9 @@ public abstract class AbstractRepositoryTest extends AbstractSpringIntegrationTe
     @MockBean
     protected SupportDataFileService supportDataFileService;
 
+    @MockBean
+    protected Flyway flyway;
+
     @Autowired
     protected PlanetRepository planetRepository;
 
