@@ -1,6 +1,6 @@
 services:
   registry:
-    container_name: registry
+    container_name: shortest-registry
     image: registry:2.8.3
     ports:
       - 5001:5000

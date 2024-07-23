@@ -46,7 +46,7 @@ function dockerStopByName() {
 # DOCKER POSTGRES SECTION
 # ================================================================================================================
 # Change the username and password to what you want.
-SPA_DOCKER_CONTAINER_NAME_POSTGRES="postgres-db"
+SPA_DOCKER_CONTAINER_NAME_POSTGRES="shortest-postgres-db"
 SPA_DOCKER_COMPOSE_POSTGRES_FILE_PATH="${PROJECT_SOURCE_DOCKER_PATH}/compose-postgres.yml"
 export DATABASE_USERNAME=${POSTGRESS_DB_USERNAME}
 export DATABASE_PASSWORD=${POSTGRESS_DB_PASSWORD}
@@ -62,7 +62,5 @@ function removePostgresDatabaseContainer() {
 function stopPostgresContainer() {
   dockerStopByName ${SPA_DOCKER_CONTAINER_NAME_POSTGRES}
 }
-
-
 
 

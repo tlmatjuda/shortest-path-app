@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres-db
+    container_name: shortest-postgres-db
     image: postgres:16-alpine3.19
     ports:
       - 5432:5432
@@ -13,4 +13,4 @@ services:
 networks:
   network:
     driver: bridge
-    name: postgres-database-network
+    name: shortest-postgres-database-network

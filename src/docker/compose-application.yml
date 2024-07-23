@@ -19,5 +19,5 @@ services:
 # Get it to connect to
 networks:
   shortest-path-app-network:
-    name: postgres-database-network
+    name: shortest-postgres-database-network
     external: true
