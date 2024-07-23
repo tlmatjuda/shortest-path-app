@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   shortest-path-application:
     container_name: shortest-path-app
@@ -10,8 +8,8 @@ services:
     environment:
       # To clear the manifest using the HTTP API you need to set REGISTRY_STORAGE_DELETE_ENABLED = true
       # in your docker-compose file and make sure that you are using a registry V2.
-      DATABASE_USERNAME: "${POSTGRESS_DB_USERNAME}"
-      DATABASE_PASSWORD: "${POSTGRESS_DB_PASSWORD}"
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_USERNAME}"
       DATABASE_HOST: postgres-db
       DATABASE_PORT: 5432
 

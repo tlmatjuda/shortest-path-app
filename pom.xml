@@ -148,7 +148,6 @@
 			<version>${mapstruct.version}</version>
 		</dependency>
 
-
 		<!-- APACHE COMMONS -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

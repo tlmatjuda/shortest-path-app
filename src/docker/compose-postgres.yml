@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: postgres-db
+    image: postgres:16-alpine3.19
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=${POSTGRESS_DEFAULT_DB_NAME}
+      - POSTGRES_PASSWORD=${POSTGRESS_DB_PASSWORD}
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+    name: postgres-database-network
