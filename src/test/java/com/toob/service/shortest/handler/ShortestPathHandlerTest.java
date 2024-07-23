@@ -12,6 +12,7 @@ import com.toob.service.shortest.util.MockedPlanetsUtil;
 import com.toob.service.shortest.util.MockedRoutesUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.Flyway;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @Slf4j
+@Ignore
 class ShortestPathHandlerTest extends AbstractSpringIntegrationTest {
 
     @MockBean

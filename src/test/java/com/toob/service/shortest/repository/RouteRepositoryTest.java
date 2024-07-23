@@ -26,8 +26,7 @@ class RouteRepositoryTest extends AbstractRepositoryTest {
 
     @Container
     @ServiceConnection
-    static PostgreSQLContainer<?> postgres =
-            new PostgreSQLContainer<>(IMAGE_NAME_POSTGRES_16_ALPINE_3_19);
+    static PostgreSQLContainer<?> postgres = buildPostgreSQLContainer();
 
     @Test
     void shouldSaveRecord() {

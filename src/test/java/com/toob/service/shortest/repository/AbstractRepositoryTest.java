@@ -59,4 +59,9 @@ public abstract class AbstractRepositoryTest extends AbstractSpringIntegrationTe
         routeRepository.saveAll(MockedRoutesUtil.fetchAll());
     }
 
+    protected static PostgreSQLContainer buildPostgreSQLContainer() {
+        return new PostgreSQLContainer<>(IMAGE_NAME_POSTGRES_16_ALPINE_3_19);
+    }
+
+
 }
