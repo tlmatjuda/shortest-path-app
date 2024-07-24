@@ -84,3 +84,23 @@ function stopRegistryContainer() {
 }
 
 
+# DOCKER APPLICATION SECTION
+# ================================================================================================================
+# Change the username and password to what you want.
+SPA_DOCKER_CONTAINER_NAME_APPLICATION="shortest-path-app"
+SPA_DOCKER_COMPOSE_APPLICATION_FILE_PATH="${PROJECT_SOURCE_DOCKER_PATH}/compose-application.yml"
+
+function createAndRunAppContainer() {
+  docker-compose -f ${SPA_DOCKER_COMPOSE_APPLICATION_FILE_PATH} up -d
+}
+
+function removeAppContainer() {
+  docker-compose -f ${SPA_DOCKER_COMPOSE_APPLICATION_FILE_PATH} down
+}
+
+function stopAppContainer() {
+  dockerStopByName ${SPA_DOCKER_CONTAINER_NAME_APPLICATION}
+}
+
+
+
