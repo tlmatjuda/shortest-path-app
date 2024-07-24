@@ -3,7 +3,7 @@ services:
     container_name: shortest-postgres-db
     image: postgres:16-alpine3.19
     ports:
-      - 5432:5432
+      - 5433:5432
     environment:
       - POSTGRES_DB=shortest_path
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
