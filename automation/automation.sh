@@ -64,3 +64,23 @@ function stopPostgresContainer() {
 }
 
 
+
+# DOCKER REGISTRY SECTION
+# ================================================================================================================
+# Change the username and password to what you want.
+SPA_DOCKER_CONTAINER_NAME_REGISTRY="shortest-registry"
+SPA_DOCKER_COMPOSE_REGISTRY_FILE_PATH="${PROJECT_SOURCE_DOCKER_PATH}/compose-registry.yml"
+
+function createAndRunRegistryContainer() {
+  docker-compose -f ${SPA_DOCKER_COMPOSE_REGISTRY_FILE_PATH} up -d
+}
+
+function removeRegistryContainer() {
+  docker-compose -f ${SPA_DOCKER_COMPOSE_REGISTRY_FILE_PATH} down
+}
+
+function stopRegistryContainer() {
+  dockerStopByName ${SPA_DOCKER_CONTAINER_NAME_REGISTRY}
+}
+
+
