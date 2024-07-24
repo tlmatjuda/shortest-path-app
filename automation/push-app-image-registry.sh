@@ -10,10 +10,10 @@
 
 
 if [ -z "${BASH_VERSINFO+x}" ]; then
-  SPA_STOP_APP_SCRIPT_PATH=${0:a:h}
+  BUILD_APP_IMAGE_SCRIPT_PATH=${0:a:h}
   alias reload="exec zsh"
 else
-  SPA_STOP_APP_SCRIPT_PATH=$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)
+  BUILD_APP_IMAGE_SCRIPT_PATH=$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)
   alias reload="bash -l"
 fi
 
@@ -21,15 +21,17 @@ fi
 
 # CONSTANTS, CONFIGS & ENVIRONMENT VARIABLES
 # ================================================================================================================
-PARENT_SPA_RUN_APP_SCRIPT_PATH=$(dirname "${SPA_STOP_APP_SCRIPT_PATH}")
-source "${PARENT_SPA_RUN_APP_SCRIPT_PATH}/automation.sh"
+SHORTEST_PATH_PROJECT_ROOT_PATH=$(dirname "${BUILD_APP_IMAGE_SCRIPT_PATH}")
+PROJECT_SOURCE_DOCKER_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/docker"
+PROJECT_SOURCE_KUBE_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/kube"
+source "${BUILD_APP_IMAGE_SCRIPT_PATH}/pretty-printer.sh"
 
 
 
-# FUNCTIONS AND ACTUAL WORK HERE
+# FUNCTIONS, ALIASES AND ACTUAL WORK HERE
 # ================================================================================================================
-info "stop-app.sh" "Stopping container : ${SPA_DOCKER_CONTAINER_NAME_APPLICATION}"
+info "build-app-image-kube.sh" "Pushing Applicaiton Image to Local Registry at : localhost:5002"
 
-stopAppContainer
+docker push localhost:5002/shortest-path-app:latest
 
-info "stop-app.sh" "${SPA_DOCKER_CONTAINER_NAME_APPLICATION} : container stopped"
+info "build-app-image-kube.sh" "Done"

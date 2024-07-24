@@ -24,7 +24,7 @@ spring:
 
     # Database Configs
     datasource:
-        url: jdbc:postgresql://localhost:5433/shortest_path
+        url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/shortest_path
         username: ${DATABASE_USERNAME}
         password: ${DATABASE_PASSWORD}
         driverClassName: org.postgresql.Driver

@@ -1,7 +1,7 @@
 services:
   shortest-path-application:
     container_name: shortest-path-app
-    image: localhost:5001/shortest-path-app:latest
+    image: localhost:5002/shortest-path-app:latest
     ports:
       - 8003:8003
     restart: unless-stopped
@@ -9,9 +9,9 @@ services:
       # To clear the manifest using the HTTP API you need to set REGISTRY_STORAGE_DELETE_ENABLED = true
       # in your postgres-compose file and make sure that you are using a registry V2.
       DATABASE_USERNAME: "${DATABASE_USERNAME}"
-      DATABASE_PASSWORD: "${DATABASE_USERNAME}"
-#      DATABASE_HOST: shortest-postgres-db
-#      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      DATABASE_HOST: shortest-postgres-db
+      DATABASE_PORT: "${DATABASE_PORT}"
 
     networks:
       - shortest-path-app-network

@@ -50,6 +50,7 @@ SPA_DOCKER_CONTAINER_NAME_POSTGRES="shortest-postgres-db"
 SPA_DOCKER_COMPOSE_POSTGRES_FILE_PATH="${PROJECT_SOURCE_DOCKER_PATH}/compose-postgres.yml"
 export DATABASE_USERNAME=${POSTGRESS_DB_USERNAME}
 export DATABASE_PASSWORD=${POSTGRESS_DB_PASSWORD}
+export DATABASE_PORT="5432"
 
 function createAndRunPostgresDatabaseContainer() {
   docker-compose -f ${SPA_DOCKER_COMPOSE_POSTGRES_FILE_PATH} up -d
@@ -84,6 +85,7 @@ function stopRegistryContainer() {
 }
 
 
+
 # DOCKER APPLICATION SECTION
 # ================================================================================================================
 # Change the username and password to what you want.
@@ -101,6 +103,4 @@ function removeAppContainer() {
 function stopAppContainer() {
   dockerStopByName ${SPA_DOCKER_CONTAINER_NAME_APPLICATION}
 }
-
-
 
