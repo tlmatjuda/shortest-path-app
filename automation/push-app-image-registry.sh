@@ -26,12 +26,14 @@ PROJECT_SOURCE_DOCKER_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/docker"
 PROJECT_SOURCE_KUBE_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/kube"
 source "${BUILD_APP_IMAGE_SCRIPT_PATH}/pretty-printer.sh"
 
+LOCAL_REGISRY_REPO="localhost:5001"
+
 
 
 # FUNCTIONS, ALIASES AND ACTUAL WORK HERE
 # ================================================================================================================
-info "build-app-image-kube.sh" "Pushing Applicaiton Image to Local Registry at : localhost:5002"
+info "build-app-image-kube.sh" "Pushing Applicaiton Image to Local Registry at : ${LOCAL_REGISRY_REPO}"
 
-docker push localhost:5001/shortest-path-app:latest
+docker push ${LOCAL_REGISRY_REPO}/shortest-path-app:latest
 
 info "build-app-image-kube.sh" "Done"

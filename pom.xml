@@ -35,7 +35,7 @@
 		<google.guava.version>33.2.0-jre</google.guava.version>
 
 		<docker.hub.io.prefix>docker.io/library</docker.hub.io.prefix>
-		<local.docker.registry.prefix>localhost:5002</local.docker.registry.prefix>
+		<local.docker.registry.prefix>localhost:5001</local.docker.registry.prefix>
 	</properties>
 
 
