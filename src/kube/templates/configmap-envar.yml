@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.environmentData.envarConfigName }}
+data:
+  db-host: "{{ .Values.databaseInfo.host }}"
+  db-port: "{{ .Values.databaseInfo.port }}"
+  db-name: "{{ .Values.databaseInfo.databaseName }}"
+  enable-registry-delete: "true"
+

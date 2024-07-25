@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.databaseInfo.deploymentName }}
+  labels:
+    app: {{ .Values.generalInfo.labelName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.generalInfo.labelName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.generalInfo.labelName }}
+    spec:
+      containers:
+        - name: {{ .Values.databaseInfo.containerInfo.name }}
+          image: {{ .Values.databaseInfo.containerInfo.imageName }}
+          ports:
+            - containerPort: {{ .Values.databaseInfo.containerInfo.port }}
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.environmentData.envarConfigName }}
+                  key: db-name
+            - name: PGPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.environmentData.envarConfigName }}
+                  key: db-port
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.environmentData.databaseSecretsName }}
+                  key: db-password
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.databaseInfo.serviceName }}
+spec:
+  type: LoadBalancer
+  selector:
+    app: {{ .Values.generalInfo.labelName }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.databaseInfo.containerInfo.port }}
+      targetPort: {{ .Values.databaseInfo.containerInfo.port }}

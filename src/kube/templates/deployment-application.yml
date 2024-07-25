@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.appInfo.deploymentName }}
+  labels:
+    app: {{ .Values.generalInfo.labelName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.generalInfo.labelName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.generalInfo.labelName }}
+    spec:
+      containers:
+        - name: {{ .Values.appInfo.containerInfo.name }}
+          image: {{ .Values.appInfo.containerInfo.imageName }}
+          ports:
+            - containerPort: {{ .Values.appInfo.containerInfo.port }}
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.environmentData.envarConfigName }}
+                  key: db-host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.environmentData.envarConfigName }}
+                  key: db-port
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.environmentData.databaseSecretsName }}
+                  key: db-username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.environmentData.databaseSecretsName }}
+                  key: db-password
+            - name: SPRING_APPLICATION_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.environmentData.applicationConfigName }}
+                  key: application.json
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.appInfo.serviceName }}
+spec:
+  type: LoadBalancer
+  selector:
+    app: {{ .Values.generalInfo.labelName }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.appInfo.containerInfo.port }}
+      targetPort: {{ .Values.appInfo.containerInfo.port }}

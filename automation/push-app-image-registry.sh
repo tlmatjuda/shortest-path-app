@@ -32,6 +32,6 @@ source "${BUILD_APP_IMAGE_SCRIPT_PATH}/pretty-printer.sh"
 # ================================================================================================================
 info "build-app-image-kube.sh" "Pushing Applicaiton Image to Local Registry at : localhost:5002"
 
-docker push localhost:5002/shortest-path-app:latest
+docker push localhost:5001/shortest-path-app:latest
 
 info "build-app-image-kube.sh" "Done"

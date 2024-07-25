@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: toob-space
-  name: shortest-path-app-config
+  namespace: {{ .Values.generalInfo.namespace }}
+  name: {{ .Values.environmentData.applicationConfigName }}
 data:
   application.json: |
     {
@@ -25,7 +25,7 @@ data:
             "exclude": "org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration"
           },
           "datasource": {
-            "url": "jdbc:postgresql://192.168.3.3:5432/shortest_path",
+            "url": "jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/shortest_path",
             "username": "${DATABASE_USERNAME}",
             "password": "${DATABASE_PASSWORD}",
             "driverClassName": "org.postgresql.Driver"
