@@ -21,11 +21,6 @@ fi
 
 # CONSTANTS, CONFIGS & ENVIRONMENT VARIABLES
 # ================================================================================================================
-SHORTEST_PATH_PROJECT_ROOT_PATH=$(dirname "${BUILD_APP_IMAGE_SCRIPT_PATH}")
-PROJECT_SOURCE_DOCKER_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/docker"
-PROJECT_SOURCE_KUBE_PATH="${SHORTEST_PATH_PROJECT_ROOT_PATH}/src/kube"
-source "${BUILD_APP_IMAGE_SCRIPT_PATH}/pretty-printer.sh"
-
 LOCAL_REGISRY_REPO="localhost:5001"
 
 

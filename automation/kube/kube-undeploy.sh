@@ -10,10 +10,10 @@
 
 
 if [ -z "${BASH_VERSINFO+x}" ]; then
-  SPA_STOP_DATABASE_SCRIPT_PATH=${0:a:h}
+  KUBE_UNDEPLOY_SCRIPT_PATH=${0:a:h}
   alias reload="exec zsh"
 else
-  SPA_STOP_DATABASE_SCRIPT_PATH=$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)
+  KUBE_UNDEPLOY_SCRIPT_PATH=$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)
   alias reload="bash -l"
 fi
 
@@ -21,18 +21,16 @@ fi
 
 # CONSTANTS, CONFIGS & ENVIRONMENT VARIABLES
 # ================================================================================================================
-PARENT_SPA_RUN_DATABASE_SCRIPT_PATH=$(dirname "${SPA_STOP_DATABASE_SCRIPT_PATH}")
-source "${PARENT_SPA_RUN_DATABASE_SCRIPT_PATH}/automation.sh"
-PROJECT_SOURCE_DOCKER_PATH="${PROJECT_SOURCE_DOCKER_PATH}"
-
-COMPOSE_POSTGRES_FILE_PATH="${PROJECT_SOURCE_DOCKER_PATH}/compose-postgres.yml"
+KUBE_AUTOMATION_PATH=$(dirname "${KUBE_UNDEPLOY_SCRIPT_PATH}")
+source "${KUBE_AUTOMATION_PATH}/automation.sh"
 
 
 
-# FUNCTIONS AND ACTUAL WORK HERE
+
+# FUNCTIONS, ALIASES AND ACTUAL WORK HERE
 # ================================================================================================================
-info "stop-database.sh" "Stopping container : ${SPA_DOCKER_CONTAINER_NAME_POSTGRES}"
+info "kube-deploy.sh" "Undeploying HELM Chart with Application and Database"
 
-stopPostgresContainer
+helm delete shortest-path-application
 
-info "stop-database.sh" "${SPA_DOCKER_CONTAINER_NAME} : container stopped"
+info "kube-deploy.sh" "Hopefully Undeployed!"
